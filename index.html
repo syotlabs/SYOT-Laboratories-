@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,60 +18,91 @@
       box-sizing: border-box;
       -webkit-font-smoothing: antialiased;
     }
+    html, body, button, input, select, textarea {
+      font-family: "Century Gothic", CenturyGothic, AppleGothic, "Futura", "Jost", sans-serif;
+    }
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
       background-color: var(--apple-bg);
       color: var(--apple-text);
       overflow-x: hidden;
+      font-size: 16px;
+      line-height: 1.65;
+      letter-spacing: 0.005em;
     }
     .nav-glass {
-      background: rgba(255, 255, 255, 0.82);
+      background: rgba(255, 255, 255, 0.9);
       backdrop-filter: saturate(180%) blur(20px);
       -webkit-backdrop-filter: saturate(180%) blur(20px);
     }
     .mega-curtain {
       transition: opacity 0.24s ease, transform 0.24s ease;
     }
-    .pill-btn-primary {
+    .pill-blue {
       background-color: var(--apple-blue);
       color: #ffffff;
       border-radius: 9999px;
-      padding: 10px 22px;
+      padding: 13px 28px;
       font-size: 15px;
-      font-weight: 400;
+      font-weight: 600;
+      letter-spacing: 0.01em;
       transition: background-color 0.2s ease, transform 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      min-width: 156px;
     }
-    .pill-btn-primary:hover {
+    .pill-blue:hover {
       background-color: var(--apple-blue-hover);
     }
-    .pill-btn-outline {
+    .pill-outline {
       background-color: transparent;
       color: var(--apple-blue);
-      border: 1px solid var(--apple-blue);
+      border: 1.5px solid var(--apple-blue);
       border-radius: 9999px;
-      padding: 10px 22px;
+      padding: 12px 26px;
       font-size: 15px;
-      font-weight: 400;
+      font-weight: 600;
+      letter-spacing: 0.01em;
       transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      min-width: 156px;
     }
-    .pill-btn-outline:hover {
+    .pill-outline:hover {
       background-color: var(--apple-blue);
       color: #ffffff;
     }
-    .pill-btn-outline-dark {
+    .pill-outline-dark {
       background-color: transparent;
       color: #2997ff;
-      border: 1px solid #2997ff;
+      border: 1.5px solid #2997ff;
       border-radius: 9999px;
-      padding: 10px 22px;
+      padding: 12px 26px;
       font-size: 15px;
-      font-weight: 400;
+      font-weight: 600;
+      letter-spacing: 0.01em;
       transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      min-width: 156px;
     }
-    .pill-btn-outline-dark:hover {
+    .pill-outline-dark:hover {
       background-color: #2997ff;
       color: #ffffff;
+    }
+    .hero-headline {
+      letter-spacing: -0.02em;
+      line-height: 1.12;
+    }
+    .hero-subheadline {
+      letter-spacing: -0.005em;
+      line-height: 1.55;
     }
     @keyframes pulseFlow {
       0%, 100% { opacity: 0.55; }
@@ -84,37 +115,38 @@
 </head>
 <body>
 
-  <!-- Top Apple-Style 44px Sticky Navigation -->
+  <!-- Top Sticky Translucent Apple-Style Navigation -->
   <header id="globalHeader" class="fixed top-0 left-0 right-0 z-50 nav-glass border-b border-black/5">
-    <nav class="max-w-[1024px] mx-auto px-4 h-[44px] flex items-center justify-between text-[12px] tracking-[-0.01em] text-[#1d1d1f]/85">
-      <a href="#top" onclick="closeAllOverlays(); return false;" class="flex items-center gap-2 font-semibold text-[#1d1d1f] hover:opacity-75 transition-opacity" aria-label="SYOT Labs Home">
-        <svg width="16" height="20" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M44 12 H76 L58 60 H26 Z" stroke="currentColor" stroke-width="11" stroke-linejoin="miter"/>
-          <path d="M42 60 H74 L56 108 H24 Z" stroke="currentColor" stroke-width="11" stroke-linejoin="miter"/>
+    <nav class="max-w-[1120px] mx-auto px-5 sm:px-8 h-[56px] sm:h-[50px] flex items-center justify-between text-[13px] text-[#1D1D1F]/90">
+      <a href="#top" onclick="closeAllOverlays(); return false;" class="flex items-center gap-2.5 font-bold text-[#1D1D1F] hover:opacity-75 transition-opacity min-h-[44px] px-1" aria-label="SYOT Labs Home">
+        <svg class="w-[15px] h-[20px]" viewBox="0 0 64 88" fill="none" stroke="currentColor" stroke-width="8" stroke-linejoin="miter">
+          <path d="M 32 6 L 54 6 L 34 44 L 12 44 Z" />
+          <path d="M 34 44 L 56 44 L 36 82 L 14 82 Z" />
         </svg>
-        <span class="tracking-tight text-[13px] font-semibold">SYOT</span>
+        <span class="tracking-wide text-[14px] font-bold">SYOT</span>
       </a>
 
-      <div class="hidden md:flex items-center gap-7">
-        <button onclick="scrollToSection('store-hero')" class="hover:text-black transition-colors">Store</button>
-        <button onmouseenter="openMegaMenu('computers')" onclick="toggleMegaMenu('computers')" class="hover:text-black transition-colors font-medium text-[#1d1d1f]">Computers</button>
-        <button onmouseenter="openMegaMenu('phones')" onclick="toggleMegaMenu('phones')" class="hover:text-black transition-colors font-medium text-[#1d1d1f]">Phones</button>
-        <button onclick="openProductDetail('lapt11', 'audio')" class="hover:text-black transition-colors">SpatialSound Pro</button>
-        <button onclick="openProductDetail('desk10', 'cooling')" class="hover:text-black transition-colors">EK-Quantum Lab</button>
-        <button onclick="scrollToSection('footer-directory')" class="hover:text-black transition-colors">Support</button>
+      <!-- Desktop Navigation Links -->
+      <div class="hidden md:flex items-center gap-8">
+        <button onclick="scrollToSection('phones-hero')" class="hover:text-black transition-colors py-2">Store</button>
+        <button onmouseenter="openMegaMenu('computers')" onclick="toggleMegaMenu('computers')" class="hover:text-black transition-colors font-bold text-[#1D1D1F] py-2">Computers</button>
+        <button onmouseenter="openMegaMenu('phones')" onclick="toggleMegaMenu('phones')" class="hover:text-black transition-colors font-bold text-[#1D1D1F] py-2">Phones</button>
+        <button onclick="openProductDetail('lapt11', 'audio')" class="hover:text-black transition-colors py-2">SpatialSound Pro</button>
+        <button onclick="openProductDetail('desk10', 'cooling')" class="hover:text-black transition-colors py-2">EK-Quantum Lab</button>
+        <button onclick="scrollToSection('footer-directory')" class="hover:text-black transition-colors py-2">Support</button>
       </div>
 
-      <div class="flex items-center gap-4">
-        <button onclick="toggleMegaMenu('computers')" class="md:hidden text-[12px] font-medium">Computers</button>
-        <button onclick="toggleMegaMenu('phones')" class="md:hidden text-[12px] font-medium">Phones</button>
-        <button onclick="toggleSearchModal()" aria-label="Search SYOT Labs" class="hover:opacity-70 transition-opacity">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Mobile Uncrowded Controls + Search & Concept Vault -->
+      <div class="flex items-center gap-2 sm:gap-5">
+        <button onclick="toggleMegaMenu('phones')" class="md:hidden text-[13px] font-bold px-3.5 min-h-[44px] rounded-full bg-black/[0.04] hover:bg-black/[0.08] flex items-center">Lineup</button>
+        <button onclick="toggleSearchModal()" aria-label="Search SYOT Labs" class="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full hover:bg-black/[0.05] transition-opacity">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="11" cy="11" r="7"></circle>
             <line x1="20" y1="20" x2="16.35" y2="16.35"></line>
           </svg>
         </button>
-        <button onclick="openProductDetail('desk10', 'specs')" aria-label="Concept Vault" class="hover:opacity-70 transition-opacity">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <button onclick="openProductDetail('syot1a', 'specs')" aria-label="Concept Vault" class="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full hover:bg-black/[0.05] transition-opacity">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M6 7h12l1 13H5L6 7z"></path>
             <path d="M9 7V5a3 3 0 0 1 6 0v2"></path>
           </svg>
@@ -122,322 +154,442 @@
       </div>
     </nav>
 
-    <div id="megaMenuCurtain" onmouseleave="closeMegaMenu()" class="hidden bg-white border-b border-black/10 shadow-sm mega-curtain">
-      <div id="megaMenuContent" class="max-w-[1024px] mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-3 gap-10"></div>
+    <!-- Apple-Style 3-Column Mega-Menu Curtain -->
+    <div id="megaMenuCurtain" onmouseleave="closeMegaMenu()" class="hidden bg-white border-b border-black/10 shadow-xl mega-curtain max-h-[82vh] overflow-y-auto">
+      <div id="megaMenuContent" class="max-w-[1120px] mx-auto px-6 sm:px-10 py-9 sm:py-12 grid grid-cols-1 md:grid-cols-3 gap-9 sm:gap-12"></div>
     </div>
   </header>
 
-  <div id="megaBackdrop" onclick="closeMegaMenu()" class="hidden fixed inset-0 bg-black/25 backdrop-blur-[2px] z-40 transition-opacity"></div>
+  <div id="megaBackdrop" onclick="closeMegaMenu()" class="hidden fixed inset-0 bg-black/30 backdrop-blur-[2px] z-40 transition-opacity"></div>
 
-  <div id="top" class="pt-[44px] bg-[#f5f5f7] border-b border-black/5">
-    <div class="max-w-[1024px] mx-auto px-4 py-3 text-center text-[12px] md:text-[13px] text-[#1d1d1f]">
-      <span>Sreyas Operational Technology Laboratories — Next-Gen Concept Hardware Showcase.</span>
-      <button onclick="openProductDetail('desk10', 'specs')" class="text-[#0071e3] hover:underline ml-1">Explore Desk10 &amp; LapT11 &rsaquo;</button>
+  <!-- Top Announcement Ribbon -->
+  <div id="top" class="pt-[56px] sm:pt-[50px] bg-[#F5F5F7] border-b border-black/5">
+    <div class="max-w-[1120px] mx-auto px-6 sm:px-8 py-5 text-center text-[14px] sm:text-[15px] text-[#1D1D1F] leading-[1.65]">
+      <span>Sreyas Operational Technology Laboratories — Introducing the SYOT 1A &amp; SYOT 1B flagship lineup alongside Desk10 and LapT11.</span>
+      <button onclick="scrollToSection('phones-hero')" class="text-[#0071E3] font-bold hover:underline ml-2 inline-block mt-2 sm:mt-0 py-1">Explore Flagships &rsaquo;</button>
     </div>
   </div>
 
-  <!-- HERO 1: Desk10 Supercomputer AIO -->
-  <section id="store-hero" class="bg-[#f5f5f7] text-[#1d1d1f] pt-14 pb-16 px-4 text-center border-b border-white">
-    <div class="max-w-[980px] mx-auto">
-      <div class="inline-flex items-center gap-2 text-[12px] font-semibold tracking-wider uppercase text-[#6e6e73] mb-2">
-        <svg width="12" height="15" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M44 12 H76 L58 60 H26 Z" stroke="#1d1d1f" stroke-width="11"/>
-          <path d="M42 60 H74 L56 108 H24 Z" stroke="#1d1d1f" stroke-width="11"/>
-        </svg>
-        <span>SYOT Computers &bull; Flagship AIO</span>
-      </div>
-      <h1 class="text-[40px] sm:text-[56px] font-semibold tracking-[-0.025em] leading-[1.06]">Desk10</h1>
-      <p class="mt-2 text-[19px] sm:text-[26px] font-normal tracking-[-0.01em] text-[#1d1d1f] max-w-[680px] mx-auto">
-        Threadripper 9995WX. RTX 5090. Custom EK-Quantum liquid cooling inside a 32-inch 4K OLED.
-      </p>
-      <p class="mt-2 text-[14px] text-[#6e6e73]">
-        256GB DDR5 &bull; 32TB Storage &bull; Dolby Vision 2 &bull; 6 Harman Kardon Speakers + Subwoofer
-      </p>
+  <main>
+    <!-- HERO 1: SYOT 1A & SYOT 1B FLAGSHIP PHONES (DARK HERO) -->
+    <section id="phones-hero" class="bg-[#000000] text-[#F5F5F7] py-16 sm:py-24 px-5 sm:px-10 text-center overflow-hidden border-b border-white/10">
+      <div class="max-w-[1060px] mx-auto space-y-6 sm:space-y-8">
+        <div class="inline-flex items-center justify-center gap-2.5 text-[12px] font-bold uppercase tracking-widest text-[#86868B]">
+          <svg class="w-[12px] h-[16px]" viewBox="0 0 64 88" fill="none" stroke="currentColor" stroke-width="8" stroke-linejoin="miter">
+            <path d="M 32 6 L 54 6 L 34 44 L 12 44 Z" />
+            <path d="M 34 44 L 56 44 L 36 82 L 14 82 Z" />
+          </svg>
+          <span>SYOT Mobile Division</span>
+        </div>
+        <h1 class="hero-headline text-[36px] sm:text-[54px] md:text-[62px] font-bold text-white">
+          SYOT 1A &amp; 1B
+        </h1>
+        <p class="hero-subheadline text-[17px] sm:text-[23px] font-normal text-[#D2D2D7] max-w-[720px] mx-auto">
+          SYOT 1A pushes the absolute limit as our top-of-the-line ultra flagship. SYOT 1B distills pure flagship speed into an effortless everyday form.
+        </p>
+        <p class="text-[15px] sm:text-[16px] font-bold text-[#2997FF]">
+          SYOT 1A from ₹1,09,999 ($1,249) &bull; SYOT 1B from ₹74,999 ($799)
+        </p>
 
-      <div class="mt-6 flex flex-wrap items-center justify-center gap-4">
-        <button onclick="openProductDetail('desk10', 'overview')" class="pill-btn-primary">Learn more</button>
-        <button onclick="openProductDetail('desk10', 'specs')" class="pill-btn-outline">Tech Specs</button>
-      </div>
+        <!-- Spacious Dual Pill CTA Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-1">
+          <button onclick="openProductDetail('syot1a', 'overview')" class="pill-blue w-full sm:w-auto">Explore SYOT 1A</button>
+          <button onclick="openProductDetail('syot1b', 'overview')" class="pill-outline-dark w-full sm:w-auto">Explore SYOT 1B</button>
+        </div>
 
-      <div class="mt-12 max-w-[760px] mx-auto">
-        <div class="relative mx-auto rounded-[24px] bg-white p-6 sm:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.06)] border border-black/5">
-          <div class="relative mx-auto w-full aspect-[16/9] rounded-[16px] bg-[#0a0a0c] border-[6px] border-[#1d1d1f] overflow-hidden flex flex-col justify-between p-5 text-left text-white">
-            <div class="flex items-center justify-between text-[11px] text-white/60 font-mono">
-              <span>SYOT OS // DESK10 WORKSTATION</span>
-              <span class="text-[#2997ff]">EK-QUANTUM VECTOR ACTIVE</span>
-            </div>
-            <div class="my-auto grid grid-cols-3 gap-3 items-center">
-              <div class="col-span-2 space-y-2">
-                <div class="text-[11px] uppercase tracking-widest text-white/50">Compute Architecture</div>
-                <div class="text-[18px] sm:text-[24px] font-semibold tracking-tight">Ryzen Threadripper 9995WX</div>
-                <div class="text-[12px] sm:text-[14px] text-white/75">NVIDIA GeForce RTX 5090 32GB GDDR7 &bull; GIGABYTE TRX50 AI TOP</div>
+        <!-- Two-Column Phone Concept Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 pt-4 text-left">
+          <!-- SYOT 1A Card -->
+          <div onclick="openProductDetail('syot1a', 'overview')" class="cursor-pointer group rounded-[30px] bg-[#141416] hover:bg-[#1A1A1E] border border-white/15 p-6 sm:p-10 transition-all flex flex-col justify-between space-y-8">
+            <div class="space-y-4">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <span class="text-[11px] font-bold uppercase tracking-widest text-[#FF9F0A]">Ultra Flagship &bull; Pro Max Tier</span>
+                <span class="text-[12px] font-bold px-3.5 py-1.5 rounded-full bg-[#FF9F0A]/15 text-[#FF9F0A]">₹1,09,999 / $1,249</span>
               </div>
-              <div class="flex justify-end">
-                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl border border-[#2997ff]/40 bg-[#2997ff]/10 flex flex-col items-center justify-center liquid-glow">
-                  <span class="text-[10px] text-[#2997ff] font-mono">COOLANT</span>
-                  <span class="text-[18px] font-semibold">28.4&deg;C</span>
-                  <span class="text-[9px] text-white/50">AX1600i PSU</span>
+              <h3 class="text-[28px] sm:text-[34px] font-bold text-white">SYOT 1A</h3>
+              <p class="text-[16px] text-[#A1A1A6] leading-[1.65]">
+                Snapdragon 8 Elite Gen 2 (2nm), 24GB LPDDR5X RAM, up to 2TB UFS 4.1, 6.9&Prime; QHD+ 165Hz LTPO Tandem OLED (4,500 nits), Quad-50MP Dual Periscope Cameras, and 6,500 mAh Silicon-Carbon battery.
+              </p>
+            </div>
+            <div class="pt-6 border-t border-white/10 flex items-center justify-between gap-5">
+              <div class="w-[74px] h-[144px] rounded-[18px] bg-black border-2 border-[#FF9F0A]/50 p-2.5 flex flex-col justify-between items-center shrink-0">
+                <div class="w-8 h-1.5 rounded-full bg-white/15"></div>
+                <svg class="w-4 h-5 text-white" viewBox="0 0 64 88" fill="none" stroke="currentColor" stroke-width="8">
+                  <path d="M 32 6 L 54 6 L 34 44 L 12 44 Z" />
+                  <path d="M 34 44 L 56 44 L 36 82 L 14 82 Z" />
+                </svg>
+                <div class="text-[8px] text-[#FF9F0A] font-bold">TITANIUM</div>
+              </div>
+              <div class="space-y-2 text-[14px]">
+                <div class="text-white font-bold">6.9&Prime; QHD+ 165Hz OLED</div>
+                <div class="text-[#A1A1A6]">24GB RAM &bull; Quad-50MP &bull; 120W</div>
+                <div class="text-[#2997FF] font-bold pt-1 group-hover:underline">View SYOT 1A Specs &rsaquo;</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SYOT 1B Card -->
+          <div onclick="openProductDetail('syot1b', 'overview')" class="cursor-pointer group rounded-[30px] bg-[#141416] hover:bg-[#1A1A1E] border border-white/15 p-6 sm:p-10 transition-all flex flex-col justify-between space-y-8">
+            <div class="space-y-4">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <span class="text-[11px] font-bold uppercase tracking-widest text-[#2997FF]">Core Flagship</span>
+                <span class="text-[12px] font-bold px-3.5 py-1.5 rounded-full bg-[#2997FF]/15 text-[#2997FF]">₹74,999 / $799</span>
+              </div>
+              <h3 class="text-[28px] sm:text-[34px] font-bold text-white">SYOT 1B</h3>
+              <p class="text-[16px] text-[#A1A1A6] leading-[1.65]">
+                Snapdragon 8 Elite Gen 2 (2nm), 16GB LPDDR5X RAM, up to 512GB UFS 4.1, 6.3&Prime; 1.5K 120Hz LTPO OLED, Triple-50MP 3x Telephoto Cameras, and 5,600 mAh Silicon-Carbon battery.
+              </p>
+            </div>
+            <div class="pt-6 border-t border-white/10 flex items-center justify-between gap-5">
+              <div class="w-[66px] h-[132px] rounded-[16px] bg-black border-2 border-[#2997FF]/50 p-2.5 flex flex-col justify-between items-center shrink-0">
+                <div class="w-7 h-1.5 rounded-full bg-white/15"></div>
+                <svg class="w-3.5 h-4 text-white" viewBox="0 0 64 88" fill="none" stroke="currentColor" stroke-width="8">
+                  <path d="M 32 6 L 54 6 L 34 44 L 12 44 Z" />
+                  <path d="M 34 44 L 56 44 L 36 82 L 14 82 Z" />
+                </svg>
+                <div class="text-[8px] text-[#2997FF] font-bold">ALUMINIUM</div>
+              </div>
+              <div class="space-y-2 text-[14px]">
+                <div class="text-white font-bold">6.3&Prime; 1.5K 120Hz OLED</div>
+                <div class="text-[#A1A1A6]">16GB RAM &bull; Triple-50MP &bull; 80W</div>
+                <div class="text-[#2997FF] font-bold pt-1 group-hover:underline">View SYOT 1B Specs &rsaquo;</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HERO 2: DESK10 SUPERCOMPUTER AIO (#F5F5F7 SIGNATURE LIGHT GRAY) -->
+    <section id="desk10-hero" class="bg-[#F5F5F7] py-16 sm:py-24 px-5 sm:px-10 text-center overflow-hidden">
+      <div class="max-w-[1020px] mx-auto space-y-6 sm:space-y-8">
+        <div class="inline-flex items-center justify-center gap-2.5 text-[12px] font-bold uppercase tracking-widest text-[#BF4800]">
+          <svg class="w-[12px] h-[16px]" viewBox="0 0 64 88" fill="none" stroke="currentColor" stroke-width="8" stroke-linejoin="miter">
+            <path d="M 32 6 L 54 6 L 34 44 L 12 44 Z" />
+            <path d="M 34 44 L 56 44 L 36 82 L 14 82 Z" />
+          </svg>
+          <span>SYOT Computers &bull; Priority Workstation AIO</span>
+        </div>
+        <h2 class="hero-headline text-[36px] sm:text-[54px] md:text-[60px] font-bold text-[#1D1D1F]">
+          Desk10
+        </h2>
+        <p class="hero-subheadline text-[17px] sm:text-[23px] font-normal text-[#1D1D1F] max-w-[680px] mx-auto">
+          Supercomputer power. All-in-one perfection.
+        </p>
+        <p class="text-[15px] text-[#6E6E73] max-w-[680px] mx-auto leading-[1.65]">
+          AMD Ryzen Threadripper 9995WX &bull; RTX 5090 32GB GDDR7 &bull; 256GB DDR5 &bull; 32TB Storage &bull; 32&Prime; 4K OLED Dolby Vision 2
+        </p>
+        <p class="text-[16px] font-bold text-[#1D1D1F]">
+          From ₹9,49,999 ($10,999)
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-1">
+          <button onclick="openProductDetail('desk10', 'overview')" class="pill-blue w-full sm:w-auto">Learn more</button>
+          <button onclick="openProductDetail('desk10', 'specs')" class="pill-outline w-full sm:w-auto">Tech Specs</button>
+        </div>
+
+        <!-- Desk10 Hardware Visual Render -->
+        <div class="pt-4 max-w-[780px] mx-auto">
+          <div class="rounded-[30px] bg-white p-6 sm:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.06)] border border-black/5">
+            <div class="w-full min-h-[240px] sm:aspect-[16/9] rounded-[20px] bg-[#0A0A0C] border-[6px] border-[#1D1D1F] overflow-hidden flex flex-col justify-between gap-5 p-6 text-left text-white">
+              <div class="flex flex-wrap items-center justify-between gap-2 text-[11px] text-white/60">
+                <span class="font-bold">SYOT OS // DESK10 PRIORITY WORKSTATION</span>
+                <span class="text-[#2997FF] font-bold">EK-QUANTUM VECTOR ACTIVE</span>
+              </div>
+              <div class="my-auto grid grid-cols-1 sm:grid-cols-3 gap-5 items-center">
+                <div class="sm:col-span-2 space-y-2">
+                  <div class="text-[11px] uppercase tracking-widest text-white/50">Compute Architecture</div>
+                  <div class="text-[19px] sm:text-[24px] font-bold tracking-tight leading-snug">Ryzen Threadripper 9995WX</div>
+                  <div class="text-[13px] sm:text-[14px] text-white/75 leading-relaxed">NVIDIA GeForce RTX 5090 32GB GDDR7 &bull; GIGABYTE TRX50 AI TOP</div>
+                </div>
+                <div class="flex sm:justify-end">
+                  <div class="w-24 h-24 rounded-2xl border border-[#2997FF]/40 bg-[#2997FF]/10 flex flex-col items-center justify-center liquid-glow">
+                    <span class="text-[10px] text-[#2997FF] font-bold">COOLANT</span>
+                    <span class="text-[18px] font-bold">28.4&deg;C</span>
+                    <span class="text-[9px] text-white/50">AX1600i PSU</span>
+                  </div>
                 </div>
               </div>
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 text-[11px] text-white/55 border-t border-white/10 pt-3">
+                <span>32&Prime; 4K (3840&times;2160) OLED &bull; Dolby Vision 2</span>
+                <span>Dolby Atmos (6 Harman Kardon + Sub)</span>
+              </div>
             </div>
-            <div class="flex items-center justify-between text-[10px] text-white/50 border-t border-white/10 pt-2">
-              <span>32&quot; 4K (3840&times;2160) OLED &bull; Dolby Vision 2</span>
-              <span>Dolby Atmos (6 Harman Kardon + Sub)</span>
-            </div>
-          </div>
-          <div class="mx-auto w-[92%] h-7 bg-gradient-to-b from-[#e8e8ed] to-[#d2d2d7] rounded-b-xl flex items-center justify-center border-x border-b border-black/10">
-            <svg width="11" height="14" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M44 12 H76 L58 60 H26 Z" stroke="#1d1d1f" stroke-width="12"/>
-              <path d="M42 60 H74 L56 108 H24 Z" stroke="#1d1d1f" stroke-width="12"/>
-            </svg>
-          </div>
-          <div class="mx-auto w-24 h-10 bg-gradient-to-b from-[#c7c7cc] to-[#e5e5ea]"></div>
-          <div class="mx-auto w-56 h-2.5 bg-[#d2d2d7] rounded-full shadow-sm"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- HERO 2: LapT11 Concept Laptop -->
-  <section id="lapt11-hero" class="bg-[#000000] text-[#f5f5f7] pt-16 pb-20 px-4 text-center border-b border-white/10">
-    <div class="max-w-[980px] mx-auto">
-      <div class="inline-flex items-center gap-2 text-[12px] font-semibold tracking-wider uppercase text-[#86868b] mb-2">
-        <svg width="12" height="15" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M44 12 H76 L58 60 H26 Z" stroke="#ffffff" stroke-width="11"/>
-          <path d="M42 60 H74 L56 108 H24 Z" stroke="#ffffff" stroke-width="11"/>
-        </svg>
-        <span>SYOT Computers &bull; Pro Laptop Concept</span>
-      </div>
-      <h2 class="text-[40px] sm:text-[56px] font-semibold tracking-[-0.025em] leading-[1.06] text-white">LapT11</h2>
-      <p class="mt-2 text-[19px] sm:text-[26px] font-normal tracking-[-0.01em] text-[#f5f5f7] max-w-[680px] mx-auto">
-        CNC Aluminium powerhouse. Ryzen 9 9955HX3D. RTX 5070 24GB. 250Wh endurance.
-      </p>
-      <p class="mt-2 text-[14px] text-[#86868b]">
-        17&quot; 4K OLED Touch &bull; 5-Fan Vapor Chamber &bull; DualView Camera System &bull; SYOT SpatialSound Pro
-      </p>
-
-      <div class="mt-6 flex flex-wrap items-center justify-center gap-4">
-        <button onclick="openProductDetail('lapt11', 'overview')" class="pill-btn-primary">Learn more</button>
-        <button onclick="openProductDetail('lapt11', 'specs')" class="pill-btn-outline-dark">Tech Specs</button>
-      </div>
-
-      <div class="mt-12 max-w-[740px] mx-auto">
-        <div class="relative mx-auto w-[90%] aspect-[16/10] rounded-t-[20px] bg-[#111113] border-[5px] border-[#3a3a3c] p-5 flex flex-col justify-between text-left overflow-hidden">
-          <div class="flex items-center justify-between text-[11px] text-white/50 font-mono">
-            <span>DUALVIEW CAMERA: FRONT 1080p50 / REAR QHD+60</span>
-            <span class="text-[#2997ff]">250Wh CELL</span>
-          </div>
-          <div class="my-auto text-center">
-            <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-white/5 border border-white/10 mb-3">
-              <svg width="24" height="28" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M44 12 H76 L58 60 H26 Z" stroke="#ffffff" stroke-width="11"/>
-                <path d="M42 60 H74 L56 108 H24 Z" stroke="#ffffff" stroke-width="11"/>
+            <div class="mx-auto w-[92%] h-7 bg-gradient-to-b from-[#E8E8ED] to-[#D2D2D7] rounded-b-xl flex items-center justify-center border-x border-b border-black/10">
+              <svg class="w-[10px] h-[13px] text-[#1D1D1F]" viewBox="0 0 64 88" fill="none" stroke="currentColor" stroke-width="9">
+                <path d="M 32 6 L 54 6 L 34 44 L 12 44 Z" />
+                <path d="M 34 44 L 56 44 L 36 82 L 14 82 Z" />
               </svg>
             </div>
-            <div class="text-[20px] sm:text-[26px] font-semibold tracking-tight text-white">5-Fan Vapor Chamber Architecture</div>
-            <div class="text-[13px] text-[#86868b] mt-1">64GB DDR5 &bull; 4TB NVMe SSD &bull; 6-Speaker Dolby Atmos</div>
-          </div>
-          <div class="flex justify-center">
-            <span class="text-[10px] tracking-widest uppercase text-white/40">SYOT Labs Precision CNC Chassis</span>
+            <div class="mx-auto w-24 h-10 bg-gradient-to-b from-[#C7C7CC] to-[#E5E5EA]"></div>
+            <div class="mx-auto w-56 h-2.5 bg-[#D2D2D7] rounded-full shadow-sm"></div>
           </div>
         </div>
-        <div class="mx-auto w-full h-4 bg-gradient-to-r from-[#6e6e73] via-[#d2d2d7] to-[#6e6e73] rounded-b-2xl shadow-[0_18px_40px_rgba(0,113,227,0.18)] flex items-center justify-center">
-          <div class="w-24 h-1 bg-black/30 rounded-full"></div>
+      </div>
+    </section>
+
+    <!-- HERO 3: LAPT11 CONCEPT WORKSTATION LAPTOP (DARK PRO HERO) -->
+    <section id="lapt11-hero" class="bg-[#0B0B0D] text-white py-16 sm:py-24 px-5 sm:px-10 text-center overflow-hidden">
+      <div class="max-w-[1020px] mx-auto space-y-6 sm:space-y-8">
+        <div class="inline-flex items-center justify-center gap-2.5 text-[12px] font-bold uppercase tracking-widest text-[#2997FF]">
+          <svg class="w-[12px] h-[16px]" viewBox="0 0 64 88" fill="none" stroke="currentColor" stroke-width="8" stroke-linejoin="miter">
+            <path d="M 32 6 L 54 6 L 34 44 L 12 44 Z" />
+            <path d="M 34 44 L 56 44 L 36 82 L 14 82 Z" />
+          </svg>
+          <span>SYOT Computers &bull; Priority Mobile Workstation</span>
         </div>
-      </div>
-    </div>
-  </section>
+        <h2 class="hero-headline text-[36px] sm:text-[54px] md:text-[60px] font-bold text-white">
+          LapT11
+        </h2>
+        <p class="hero-subheadline text-[17px] sm:text-[23px] font-normal text-[#F5F5F7] max-w-[680px] mx-auto">
+          Pro performance. Unchained with 250Wh.
+        </p>
+        <p class="text-[15px] text-[#86868B] max-w-[680px] mx-auto leading-[1.65]">
+          AMD Ryzen 9 9955HX3D &bull; RTX 5070 24GB &bull; 5-Fan Vapor Chamber &bull; DualView Camera &bull; SYOT SpatialSound Pro
+        </p>
+        <p class="text-[16px] font-bold text-[#2997FF]">
+          From ₹3,49,999 ($3,999)
+        </p>
 
-  <!-- HERO 3: SYOT Phones Concept Section -->
-  <section id="phones-hero" class="bg-[#f5f5f7] text-[#1d1d1f] pt-16 pb-20 px-4 text-center">
-    <div class="max-w-[980px] mx-auto">
-      <div class="inline-flex items-center gap-2 text-[12px] font-semibold tracking-wider uppercase text-[#6e6e73] mb-2">
-        <svg width="12" height="15" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M44 12 H76 L58 60 H26 Z" stroke="#1d1d1f" stroke-width="11"/>
-          <path d="M42 60 H74 L56 108 H24 Z" stroke="#1d1d1f" stroke-width="11"/>
-        </svg>
-        <span>SYOT Mobile Division</span>
-      </div>
-      <h2 class="text-[40px] sm:text-[56px] font-semibold tracking-[-0.025em] leading-[1.06]">SYOT Phone</h2>
-      <p class="mt-2 text-[19px] sm:text-[26px] font-normal tracking-[-0.01em] text-[#1d1d1f] max-w-[640px] mx-auto">
-        Next-generation mobile hardware engineered at Sreyas Operational Technology Laboratories.
-      </p>
-      <p class="mt-2 text-[14px] text-[#6e6e73]">In active R&amp;D &bull; Concept specifications coming soon</p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-1">
+          <button onclick="openProductDetail('lapt11', 'overview')" class="pill-blue w-full sm:w-auto">Learn more</button>
+          <button onclick="openProductDetail('lapt11', 'specs')" class="pill-outline-dark w-full sm:w-auto">Tech Specs</button>
+        </div>
 
-      <div class="mt-6 flex flex-wrap items-center justify-center gap-4">
-        <button onclick="toggleMegaMenu('phones')" class="pill-btn-primary">Explore Phones</button>
-        <button onclick="openPhoneTeaserModal()" class="pill-btn-outline">R&amp;D Status</button>
-      </div>
-
-      <div class="mt-12 flex justify-center">
-        <div class="w-[230px] h-[440px] rounded-[40px] bg-[#1d1d1f] p-3 shadow-[0_24px_60px_rgba(0,0,0,0.12)] border border-black/10">
-          <div class="w-full h-full rounded-[32px] bg-gradient-to-b from-[#161618] to-[#000000] flex flex-col items-center justify-between py-6 px-4 text-white">
-            <div class="w-20 h-5 rounded-full bg-black border border-white/10"></div>
-            <div class="flex flex-col items-center">
-              <svg width="34" height="40" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M44 12 H76 L58 60 H26 Z" stroke="#ffffff" stroke-width="10"/>
-                <path d="M42 60 H74 L56 108 H24 Z" stroke="#ffffff" stroke-width="10"/>
-              </svg>
-              <span class="mt-4 text-[13px] font-medium tracking-tight text-white/90">SYOT Mobile</span>
-              <span class="text-[11px] text-white/45 mt-1">Prototype Vault</span>
+        <!-- LapT11 Hardware Visual Render -->
+        <div class="pt-4 max-w-[760px] mx-auto">
+          <div class="mx-auto w-full sm:w-[92%] min-h-[230px] sm:aspect-[16/10] rounded-t-[24px] bg-[#141417] border-[5px] border-[#3A3A3C] p-6 sm:p-8 flex flex-col justify-between gap-5 text-left overflow-hidden">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 text-[11px] text-white/55 font-bold">
+              <span>DUALVIEW CAMERA: FRONT 1080p50 / REAR QHD+60</span>
+              <span class="text-[#2997FF]">250Wh CELL</span>
             </div>
-            <div class="w-24 h-1 rounded-full bg-white/30"></div>
+            <div class="my-auto text-center space-y-2">
+              <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-white/5 border border-white/10 mb-1">
+                <svg class="w-5 h-7 text-white" viewBox="0 0 64 88" fill="none" stroke="currentColor" stroke-width="8">
+                  <path d="M 32 6 L 54 6 L 34 44 L 12 44 Z" />
+                  <path d="M 34 44 L 56 44 L 36 82 L 14 82 Z" />
+                </svg>
+              </div>
+              <div class="text-[20px] sm:text-[26px] font-bold tracking-tight text-white leading-snug">5-Fan Vapor Chamber Architecture</div>
+              <div class="text-[14px] text-[#86868B] leading-relaxed">17&Prime; 4K OLED Touch &bull; 64GB DDR5 &bull; 4TB NVMe &bull; 6-Speaker Dolby Atmos</div>
+            </div>
+            <div class="flex justify-center">
+              <span class="text-[10px] tracking-widest uppercase text-white/40 font-bold">SYOT Labs Precision CNC Aluminium Chassis</span>
+            </div>
+          </div>
+          <div class="mx-auto w-full h-4 bg-gradient-to-r from-[#6E6E73] via-[#D2D2D7] to-[#6E6E73] rounded-b-2xl shadow-[0_18px_40px_rgba(0,113,227,0.22)] flex items-center justify-center">
+            <div class="w-24 h-1 bg-black/30 rounded-full"></div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Two-Column Feature Grid -->
-  <section class="bg-white py-4 px-4">
-    <div class="max-w-[1380px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
-      <div class="bg-[#f5f5f7] rounded-none md:rounded-2xl p-10 text-center flex flex-col justify-between min-h-[420px]">
-        <div>
-          <span class="text-[12px] font-semibold uppercase tracking-wider text-[#0071e3]">LapT11 Exclusive</span>
-          <h3 class="text-[32px] font-semibold tracking-tight mt-1">DualView Camera System</h3>
-          <p class="text-[17px] text-[#1d1d1f] mt-2 max-w-[420px] mx-auto">
-            Front 1080p 50fps for studio calls. Rear lid QHD+ 60fps for crisp capture anywhere.
-          </p>
-          <div class="mt-5 flex justify-center gap-3">
-            <button onclick="openProductDetail('lapt11', 'camera')" class="pill-btn-primary text-[14px] py-2 px-5">Test DualView</button>
-          </div>
+    <!-- LINEUP OVERVIEW & SIDE-BY-SIDE COMPARISONS -->
+    <section class="bg-[#F5F5F7] py-16 sm:py-24 px-5 sm:px-10">
+      <div class="max-w-[1120px] mx-auto space-y-12">
+        <div class="text-center max-w-2xl mx-auto space-y-3">
+          <span class="text-[12px] font-bold uppercase tracking-widest text-[#6E6E73]">SYOT Computers Lineup</span>
+          <h2 class="text-[32px] sm:text-[44px] font-bold text-[#1D1D1F] leading-tight">Priority Workstation Lineup</h2>
         </div>
-        <div class="mt-8 grid grid-cols-2 gap-4 max-w-[380px] mx-auto w-full">
-          <div class="bg-white rounded-2xl p-4 border border-black/5">
-            <div class="text-[11px] font-semibold text-[#6e6e73] uppercase">Front Camera</div>
-            <div class="text-[18px] font-semibold mt-1">1080p 50fps</div>
-            <div class="text-[12px] text-[#6e6e73]">FHD+ Photos</div>
-          </div>
-          <div class="bg-white rounded-2xl p-4 border border-black/5">
-            <div class="text-[11px] font-semibold text-[#0071e3] uppercase">Rear Lid Camera</div>
-            <div class="text-[18px] font-semibold mt-1">QHD+ 60fps</div>
-            <div class="text-[12px] text-[#6e6e73]">QHD+ Photos</div>
-          </div>
-        </div>
-      </div>
 
-      <div class="bg-[#000000] text-white rounded-none md:rounded-2xl p-10 text-center flex flex-col justify-between min-h-[420px]">
-        <div>
-          <span class="text-[12px] font-semibold uppercase tracking-wider text-[#2997ff]">Acoustic Engineering</span>
-          <h3 class="text-[32px] font-semibold tracking-tight mt-1">SYOT SpatialSound Pro</h3>
-          <p class="text-[17px] text-[#a1a1a6] mt-2 max-w-[420px] mx-auto">
-            6-speaker Dolby Atmos architecture on LapT11, and 6 Harman Kardon drivers plus subwoofer on Desk10.
-          </p>
-          <div class="mt-5 flex justify-center gap-3">
-            <button onclick="openProductDetail('lapt11', 'audio')" class="pill-btn-primary text-[14px] py-2 px-5">Explore Audio</button>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10">
+          <!-- Desk10 Card -->
+          <div class="bg-white rounded-[30px] p-7 sm:p-11 shadow-sm border border-black/[0.04] flex flex-col justify-between text-center space-y-6">
+            <div class="space-y-3">
+              <span class="text-[12px] font-bold uppercase tracking-wider text-[#BF4800]">Priority Workstation AIO</span>
+              <h3 class="text-[30px] sm:text-[38px] font-bold text-[#1D1D1F]">Desk10</h3>
+              <div class="text-[16px] font-bold text-[#1D1D1F]">₹9,49,999 / $10,999</div>
+              <p class="text-[16px] text-[#6E6E73] max-w-sm mx-auto leading-[1.65]">
+                32-inch 4K OLED with Dolby Vision 2, Threadripper 9995WX, RTX 5090 32GB, and custom EK-Quantum liquid cooling.
+              </p>
+            </div>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-2">
+              <button onclick="openProductDetail('desk10', 'overview')" class="pill-blue w-full sm:w-auto">Learn more</button>
+              <button onclick="openProductDetail('desk10', 'specs')" class="pill-outline w-full sm:w-auto">Tech Specs</button>
+            </div>
+          </div>
+
+          <!-- LapT11 Card -->
+          <div class="bg-[#141416] text-white rounded-[30px] p-7 sm:p-11 shadow-sm flex flex-col justify-between text-center space-y-6">
+            <div class="space-y-3">
+              <span class="text-[12px] font-bold uppercase tracking-wider text-[#2997FF]">Priority Mobile Workstation</span>
+              <h3 class="text-[30px] sm:text-[38px] font-bold text-white">LapT11</h3>
+              <div class="text-[16px] font-bold text-[#2997FF]">₹3,49,999 / $3,999</div>
+              <p class="text-[16px] text-[#A1A1A6] max-w-sm mx-auto leading-[1.65]">
+                17-inch 4K OLED Touchscreen, CNC Aluminium chassis, Ryzen 9 9955HX3D, RTX 5070 24GB, and 250Wh battery.
+              </p>
+            </div>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-2">
+              <button onclick="openProductDetail('lapt11', 'overview')" class="pill-blue w-full sm:w-auto">Learn more</button>
+              <button onclick="openProductDetail('lapt11', 'specs')" class="pill-outline-dark w-full sm:w-auto">Tech Specs</button>
+            </div>
           </div>
         </div>
-        <div class="mt-8 flex items-center justify-center gap-3">
-          <span class="w-3 h-10 rounded-full bg-[#2997ff]"></span>
-          <span class="w-3 h-16 rounded-full bg-[#2997ff]/80"></span>
-          <span class="w-3 h-24 rounded-full bg-[#2997ff]"></span>
-          <span class="w-3 h-14 rounded-full bg-[#2997ff]/70"></span>
-          <span class="w-3 h-20 rounded-full bg-[#2997ff]"></span>
-          <span class="w-3 h-12 rounded-full bg-[#2997ff]/80"></span>
+
+        <!-- Side-by-Side Comparison: SYOT 1A vs SYOT 1B -->
+        <div id="compare-phones-section" class="bg-white rounded-[30px] p-7 sm:p-12 border border-black/[0.05] space-y-10">
+          <h3 class="text-[26px] sm:text-[34px] font-bold text-[#1D1D1F] text-center">SYOT 1A vs. SYOT 1B</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-12 text-center">
+            <div class="space-y-7 pb-9 sm:pb-0 border-b sm:border-b-0 sm:border-r border-[#D2D2D7] sm:pr-8">
+              <div class="pb-5 border-b border-[#D2D2D7] space-y-1.5">
+                <div class="text-[24px] sm:text-[28px] font-bold text-[#1D1D1F]">SYOT 1A</div>
+                <div class="text-[12px] font-bold text-[#BF4800]">Ultra Flagship</div>
+                <div class="text-[16px] font-bold text-[#1D1D1F]">₹1,09,999 / $1,249</div>
+              </div>
+              <div class="space-y-1">
+                <div class="text-[17px] font-bold">Snapdragon 8 Elite Gen 2</div>
+                <div class="text-[14px] text-[#6E6E73]">2nm &bull; 24GB LPDDR5X &bull; 1TB–2TB UFS 4.1</div>
+              </div>
+              <div class="space-y-1">
+                <div class="text-[17px] font-bold">6.9&Prime; QHD+ Tandem OLED</div>
+                <div class="text-[14px] text-[#6E6E73]">1–165Hz LTPO &bull; 4,500 Nits Peak</div>
+              </div>
+              <div class="space-y-1">
+                <div class="text-[17px] font-bold">Quad-50MP Pro Array</div>
+                <div class="text-[14px] text-[#6E6E73]">1&Prime; LYT-900 + 3.5x &amp; 8x Dual Periscope</div>
+              </div>
+              <div class="space-y-1">
+                <div class="text-[17px] font-bold">6,500 mAh Silicon-Carbon</div>
+                <div class="text-[14px] text-[#6E6E73]">120W HyperCharge &bull; Grade-5 Titanium</div>
+              </div>
+            </div>
+
+            <div class="space-y-7">
+              <div class="pb-5 border-b border-[#D2D2D7] space-y-1.5">
+                <div class="text-[24px] sm:text-[28px] font-bold text-[#1D1D1F]">SYOT 1B</div>
+                <div class="text-[12px] font-bold text-[#0071E3]">Core Flagship</div>
+                <div class="text-[16px] font-bold text-[#1D1D1F]">₹74,999 / $799</div>
+              </div>
+              <div class="space-y-1">
+                <div class="text-[17px] font-bold">Snapdragon 8 Elite Gen 2</div>
+                <div class="text-[14px] text-[#6E6E73]">2nm &bull; 16GB LPDDR5X &bull; 256GB–512GB UFS 4.1</div>
+              </div>
+              <div class="space-y-1">
+                <div class="text-[17px] font-bold">6.3&Prime; 1.5K LTPO OLED</div>
+                <div class="text-[14px] text-[#6E6E73]">1–120Hz Adaptive Refresh</div>
+              </div>
+              <div class="space-y-1">
+                <div class="text-[17px] font-bold">Triple-50MP Camera System</div>
+                <div class="text-[14px] text-[#6E6E73]">Main + Ultra-Wide + 3x Optical Telephoto</div>
+              </div>
+              <div class="space-y-1">
+                <div class="text-[17px] font-bold">5,600 mAh Silicon-Carbon</div>
+                <div class="text-[14px] text-[#6E6E73]">80W Fast Charge &bull; Aerospace Aluminium</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <!-- Interactive Product Detail & Tech Specs Modal -->
-  <div id="productModal" class="hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-sm overflow-y-auto">
-    <div class="min-h-screen flex items-start justify-center p-0 sm:p-6">
-      <div class="bg-white w-full max-w-[960px] sm:rounded-[28px] shadow-2xl overflow-hidden my-auto">
-        <div class="sticky top-0 z-10 bg-white/90 backdrop-blur-md border-b border-black/10 px-6 py-4 flex items-center justify-between">
+  <div id="productModal" class="hidden fixed inset-0 z-50 bg-black/55 backdrop-blur-sm overflow-y-auto">
+    <div class="min-h-screen flex items-center justify-center p-4 sm:p-8">
+      <div class="bg-white w-full max-w-[960px] rounded-[28px] shadow-2xl overflow-hidden my-auto">
+        <div class="sticky top-0 z-10 bg-white/95 backdrop-blur-md border-b border-black/10 px-6 sm:px-8 py-4 flex flex-wrap items-center justify-between gap-3">
           <div class="flex items-center gap-2.5">
-            <svg width="14" height="17" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M44 12 H76 L58 60 H26 Z" stroke="#1d1d1f" stroke-width="11"/>
-              <path d="M42 60 H74 L56 108 H24 Z" stroke="#1d1d1f" stroke-width="11"/>
+            <svg class="w-[14px] h-[18px] text-[#1D1D1F]" viewBox="0 0 64 88" fill="none" stroke="currentColor" stroke-width="8">
+              <path d="M 32 6 L 54 6 L 34 44 L 12 44 Z" />
+              <path d="M 34 44 L 56 44 L 36 82 L 14 82 Z" />
             </svg>
-            <span id="modalProductTitle" class="font-semibold text-[17px]">Desk10</span>
+            <div>
+              <span id="modalProductTitle" class="font-bold text-[17px] text-[#1D1D1F]">SYOT 1A</span>
+              <span id="modalProductSubtitle" class="hidden sm:inline text-[13px] text-[#6E6E73] ml-2"></span>
+            </div>
           </div>
           <div class="flex items-center gap-2">
-            <button onclick="switchModalTab('overview')" id="tabOverview" class="text-[13px] px-3 py-1 rounded-full bg-[#1d1d1f] text-white">Overview</button>
-            <button onclick="switchModalTab('specs')" id="tabSpecs" class="text-[13px] px-3 py-1 rounded-full text-[#1d1d1f] hover:bg-black/5">Tech Specs</button>
-            <button onclick="closeProductModal()" aria-label="Close" class="ml-2 w-8 h-8 rounded-full bg-[#f5f5f7] hover:bg-[#e8e8ed] flex items-center justify-center text-[#1d1d1f]">
+            <button onclick="switchModalTab('overview')" id="tabOverview" class="text-[13px] font-bold px-3.5 py-2 min-h-[40px] rounded-full bg-[#1D1D1F] text-white">Overview</button>
+            <button onclick="switchModalTab('specs')" id="tabSpecs" class="text-[13px] font-bold px-3.5 py-2 min-h-[40px] rounded-full text-[#1D1D1F] hover:bg-black/5">Tech Specs</button>
+            <button onclick="closeProductModal()" aria-label="Close" class="ml-1 w-10 h-10 rounded-full bg-[#F5F5F7] hover:bg-[#E8E8ED] flex items-center justify-center text-[#1D1D1F] text-lg font-bold">
               &times;
             </button>
           </div>
         </div>
-        <div id="modalBody" class="p-6 sm:p-10"></div>
+        <div id="detail-body-container" class="p-6 sm:p-10 space-y-8"></div>
       </div>
     </div>
   </div>
 
-  <!-- Search Modal -->
-  <div id="searchModal" class="hidden fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-start justify-center pt-20 px-4">
-    <div class="bg-white w-full max-w-[600px] rounded-2xl shadow-2xl p-6">
-      <div class="flex items-center gap-3 border-b border-black/10 pb-3">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6e6e73" stroke-width="2">
+  <!-- Live Search Modal -->
+  <div id="searchModal" class="hidden fixed inset-0 z-50 bg-black/45 backdrop-blur-sm flex items-start justify-center pt-20 p-4 sm:p-8">
+    <div class="bg-white w-full max-w-[640px] rounded-[24px] shadow-2xl p-6 sm:p-7 space-y-4">
+      <div class="flex items-center gap-3 border-b border-black/10 pb-3.5">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6E6E73" stroke-width="2">
           <circle cx="11" cy="11" r="7"></circle>
           <line x1="20" y1="20" x2="16.35" y2="16.35"></line>
         </svg>
-        <input id="searchInput" oninput="filterSearch(this.value)" type="text" placeholder="Search SYOT Labs concepts (Desk10, LapT11, DualView...)" class="w-full outline-none text-[16px]" />
-        <button onclick="toggleSearchModal()" class="text-[#6e6e73] hover:text-black text-xl">&times;</button>
+        <input id="searchInput" oninput="filterSearch(this.value)" type="text" placeholder="Search SYOT 1A, SYOT 1B, Desk10, LapT11..." class="w-full outline-none text-[16px]" />
+        <button onclick="toggleSearchModal()" class="text-[#6E6E73] hover:text-black text-2xl leading-none min-w-[40px] min-h-[40px] flex items-center justify-center">&times;</button>
       </div>
-      <div id="searchResults" class="mt-4 space-y-2 text-[14px]">
-        <button onclick="toggleSearchModal(); openProductDetail('desk10', 'specs')" class="w-full text-left px-3 py-2 rounded-lg hover:bg-[#f5f5f7] flex justify-between">
-          <span class="font-medium">Desk10 Supercomputer AIO</span>
-          <span class="text-[#6e6e73]">Threadripper 9995WX &bull; RTX 5090</span>
+      <div id="search-results-list" class="space-y-2.5 text-[14px]">
+        <button onclick="toggleSearchModal(); openProductDetail('syot1a', 'overview')" class="w-full text-left px-4 py-3 rounded-xl hover:bg-[#F5F5F7] flex flex-col sm:flex-row sm:justify-between gap-1">
+          <span class="font-bold text-[#1D1D1F]">SYOT 1A — Ultra Flagship</span>
+          <span class="text-[#6E6E73]">₹1,09,999 / $1,249</span>
         </button>
-        <button onclick="toggleSearchModal(); openProductDetail('lapt11', 'specs')" class="w-full text-left px-3 py-2 rounded-lg hover:bg-[#f5f5f7] flex justify-between">
-          <span class="font-medium">LapT11 Pro Laptop</span>
-          <span class="text-[#6e6e73]">Ryzen 9 9955HX3D &bull; RTX 5070 24GB</span>
+        <button onclick="toggleSearchModal(); openProductDetail('syot1b', 'overview')" class="w-full text-left px-4 py-3 rounded-xl hover:bg-[#F5F5F7] flex flex-col sm:flex-row sm:justify-between gap-1">
+          <span class="font-bold text-[#1D1D1F]">SYOT 1B — Core Flagship</span>
+          <span class="text-[#6E6E73]">₹74,999 / $799</span>
         </button>
-        <button onclick="toggleSearchModal(); openProductDetail('lapt11', 'camera')" class="w-full text-left px-3 py-2 rounded-lg hover:bg-[#f5f5f7] flex justify-between">
-          <span class="font-medium">DualView Camera System</span>
-          <span class="text-[#6e6e73]">Front 1080p50 &bull; Rear QHD+60</span>
+        <button onclick="toggleSearchModal(); openProductDetail('desk10', 'specs')" class="w-full text-left px-4 py-3 rounded-xl hover:bg-[#F5F5F7] flex flex-col sm:flex-row sm:justify-between gap-1">
+          <span class="font-bold text-[#1D1D1F]">Desk10 — Priority Workstation AIO</span>
+          <span class="text-[#6E6E73]">₹9,49,999 / $10,999</span>
+        </button>
+        <button onclick="toggleSearchModal(); openProductDetail('lapt11', 'specs')" class="w-full text-left px-4 py-3 rounded-xl hover:bg-[#F5F5F7] flex flex-col sm:flex-row sm:justify-between gap-1">
+          <span class="font-bold text-[#1D1D1F]">LapT11 — Priority Mobile Workstation</span>
+          <span class="text-[#6E6E73]">₹3,49,999 / $3,999</span>
         </button>
       </div>
     </div>
   </div>
 
   <!-- Apple-Style Directory Footer -->
-  <footer id="footer-directory" class="bg-[#f5f5f7] text-[#6e6e73] text-[12px] border-t border-black/10">
-    <div class="max-w-[1024px] mx-auto px-4 py-10">
-      <p class="pb-6 border-b border-black/10 leading-relaxed">
-        All hardware architectures, thermal loops, and industrial designs showcased on this site are original conceptual creations by <strong class="text-[#1d1d1f]">Sreyas Operational Technology Laboratories (SYOT Labs)</strong>.
+  <footer id="footer-directory" class="bg-[#F5F5F7] text-[#6E6E73] text-[13px] border-t border-black/10">
+    <div class="max-w-[1120px] mx-auto px-5 sm:px-10 py-14 space-y-8">
+      <p class="pb-7 border-b border-black/10 leading-[1.65]">
+        All hardware architectures, thermal loops, and industrial designs showcased on this site are original conceptual creations by <strong class="text-[#1D1D1F]">Sreyas Operational Technology Laboratories (SYOT Labs)</strong>.
       </p>
 
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 py-8 border-b border-black/10">
-        <div>
-          <h4 class="font-semibold text-[#1d1d1f] mb-2.5">Explore Computers</h4>
-          <ul class="space-y-2">
-            <li><button onclick="openProductDetail('desk10', 'overview')" class="hover:underline">Desk10 AIO</button></li>
-            <li><button onclick="openProductDetail('lapt11', 'overview')" class="hover:underline">LapT11 Laptop</button></li>
-            <li><button onclick="openProductDetail('desk10', 'specs')" class="hover:underline">Compare Workstations</button></li>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 pb-8 border-b border-black/10">
+        <div class="space-y-3">
+          <h4 class="font-bold text-[#1D1D1F]">Explore Phones</h4>
+          <ul class="space-y-2.5">
+            <li><button onclick="openProductDetail('syot1a', 'overview')" class="hover:underline py-0.5">SYOT 1A (₹1,09,999)</button></li>
+            <li><button onclick="openProductDetail('syot1b', 'overview')" class="hover:underline py-0.5">SYOT 1B (₹74,999)</button></li>
+            <li><button onclick="scrollToSection('compare-phones-section')" class="hover:underline py-0.5">Compare SYOT Phones</button></li>
           </ul>
         </div>
-        <div>
-          <h4 class="font-semibold text-[#1d1d1f] mb-2.5">Explore Phones</h4>
-          <ul class="space-y-2">
-            <li><button onclick="scrollToSection('phones-hero')" class="hover:underline">SYOT Phone Concept</button></li>
-            <li><button onclick="openPhoneTeaserModal()" class="hover:underline">Mobile R&amp;D Roadmap</button></li>
+        <div class="space-y-3">
+          <h4 class="font-bold text-[#1D1D1F]">Explore Computers</h4>
+          <ul class="space-y-2.5">
+            <li><button onclick="openProductDetail('desk10', 'overview')" class="hover:underline py-0.5">Desk10 (₹9,49,999)</button></li>
+            <li><button onclick="openProductDetail('lapt11', 'overview')" class="hover:underline py-0.5">LapT11 (₹3,49,999)</button></li>
+            <li><button onclick="openProductDetail('desk10', 'specs')" class="hover:underline py-0.5">Workstation Specs</button></li>
           </ul>
         </div>
-        <div>
-          <h4 class="font-semibold text-[#1d1d1f] mb-2.5">SYOT Technologies</h4>
-          <ul class="space-y-2">
-            <li><button onclick="openProductDetail('lapt11', 'camera')" class="hover:underline">DualView Camera System</button></li>
-            <li><button onclick="openProductDetail('lapt11', 'audio')" class="hover:underline">SYOT SpatialSound Pro</button></li>
-            <li><button onclick="openProductDetail('desk10', 'cooling')" class="hover:underline">EK-Quantum Vector Loop</button></li>
+        <div class="space-y-3">
+          <h4 class="font-bold text-[#1D1D1F]">SYOT Technologies</h4>
+          <ul class="space-y-2.5">
+            <li><button onclick="openProductDetail('lapt11', 'camera')" class="hover:underline py-0.5">DualView Camera System</button></li>
+            <li><button onclick="openProductDetail('lapt11', 'audio')" class="hover:underline py-0.5">SYOT SpatialSound Pro</button></li>
+            <li><button onclick="openProductDetail('desk10', 'cooling')" class="hover:underline py-0.5">EK-Quantum Vector Loop</button></li>
           </ul>
         </div>
-        <div>
-          <h4 class="font-semibold text-[#1d1d1f] mb-2.5">About SYOT Labs</h4>
-          <ul class="space-y-2">
+        <div class="space-y-3">
+          <h4 class="font-bold text-[#1D1D1F]">About SYOT Labs</h4>
+          <ul class="space-y-2.5">
             <li><span>Founded by Sreyas</span></li>
             <li><span>Concept Hardware Division</span></li>
-            <li><span>GitHub Pages Ready</span></li>
+            <li><span>Hyderabad, India</span></li>
           </ul>
         </div>
       </div>
 
-      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div class="flex items-center gap-2 text-[#1d1d1f]">
-          <svg width="12" height="15" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M44 12 H76 L58 60 H26 Z" stroke="#1d1d1f" stroke-width="11"/>
-            <path d="M42 60 H74 L56 108 H24 Z" stroke="#1d1d1f" stroke-width="11"/>
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-[12px]">
+        <div class="flex items-center gap-2.5 text-[#1D1D1F]">
+          <svg class="w-[12px] h-[16px]" viewBox="0 0 64 88" fill="none" stroke="currentColor" stroke-width="8">
+            <path d="M 32 6 L 54 6 L 34 44 L 12 44 Z" />
+            <path d="M 34 44 L 56 44 L 36 82 L 14 82 Z" />
           </svg>
           <span>Copyright &copy; 2026 SYOT Labs (Sreyas Operational Technology Laboratories). All rights reserved.</span>
         </div>
@@ -450,20 +602,20 @@
     const megaMenus = {
       computers: `
         <div>
-          <div class="text-[12px] text-[#6e6e73] mb-3">Explore Computers</div>
-          <ul class="space-y-2.5 text-[22px] font-semibold tracking-tight text-[#1d1d1f]">
-            <li><button onclick="closeMegaMenu(); scrollToSection('store-hero')" class="hover:text-[#0071e3] transition-colors">Explore All Computers</button></li>
-            <li><button onclick="closeMegaMenu(); openProductDetail('desk10', 'overview')" class="hover:text-[#0071e3] transition-colors">Desk10</button></li>
-            <li><button onclick="closeMegaMenu(); openProductDetail('lapt11', 'overview')" class="hover:text-[#0071e3] transition-colors">LapT11</button></li>
+          <div class="text-[12px] text-[#6E6E73] mb-3">Explore Computers</div>
+          <ul class="space-y-3 text-[22px] font-bold tracking-tight text-[#1D1D1F]">
+            <li><button onclick="closeMegaMenu(); scrollToSection('desk10-hero')" class="hover:text-[#0071E3] transition-colors">Explore All Computers</button></li>
+            <li><button onclick="closeMegaMenu(); openProductDetail('desk10', 'overview')" class="hover:text-[#0071E3] transition-colors">Desk10</button></li>
+            <li><button onclick="closeMegaMenu(); openProductDetail('lapt11', 'overview')" class="hover:text-[#0071E3] transition-colors">LapT11</button></li>
           </ul>
-          <div class="mt-5 space-y-1.5 text-[13px] font-medium text-[#1d1d1f]">
-            <div><button onclick="closeMegaMenu(); openProductDetail('desk10', 'specs')" class="hover:underline">Desk10 Tech Specs</button></div>
-            <div><button onclick="closeMegaMenu(); openProductDetail('lapt11', 'specs')" class="hover:underline">LapT11 Tech Specs</button></div>
+          <div class="mt-5 space-y-2 text-[13px] font-bold text-[#1D1D1F]">
+            <div><button onclick="closeMegaMenu(); openProductDetail('desk10', 'specs')" class="hover:underline">Desk10 — ₹9,49,999 / $10,999</button></div>
+            <div><button onclick="closeMegaMenu(); openProductDetail('lapt11', 'specs')" class="hover:underline">LapT11 — ₹3,49,999 / $3,999</button></div>
           </div>
         </div>
         <div>
-          <div class="text-[12px] text-[#6e6e73] mb-3">Flagship Architectures</div>
-          <ul class="space-y-2.5 text-[13px] font-medium text-[#1d1d1f]">
+          <div class="text-[12px] text-[#6E6E73] mb-3">Flagship Architectures</div>
+          <ul class="space-y-2.5 text-[13px] font-bold text-[#1D1D1F]">
             <li><button onclick="closeMegaMenu(); openProductDetail('desk10', 'cooling')" class="hover:underline">Custom EK-Quantum Loop</button></li>
             <li><button onclick="closeMegaMenu(); openProductDetail('lapt11', 'camera')" class="hover:underline">DualView Camera System</button></li>
             <li><button onclick="closeMegaMenu(); openProductDetail('lapt11', 'audio')" class="hover:underline">SYOT SpatialSound Pro</button></li>
@@ -471,42 +623,48 @@
           </ul>
         </div>
         <div>
-          <div class="text-[12px] text-[#6e6e73] mb-3">More from SYOT Computers</div>
-          <ul class="space-y-2.5 text-[13px] font-medium text-[#1d1d1f]">
-            <li><span class="text-[#6e6e73]">AMD Ryzen Threadripper 9995WX</span></li>
-            <li><span class="text-[#6e6e73]">AMD Ryzen 9 9955HX3D</span></li>
-            <li><span class="text-[#6e6e73]">NVIDIA GeForce RTX 5090 &amp; 5070</span></li>
+          <div class="text-[12px] text-[#6E6E73] mb-3">Priority Workstation Silicon</div>
+          <ul class="space-y-2.5 text-[13px] font-medium text-[#6E6E73]">
+            <li>AMD Ryzen Threadripper 9995WX</li>
+            <li>AMD Ryzen 9 9955HX3D</li>
+            <li>NVIDIA GeForce RTX 5090 &amp; 5070</li>
           </ul>
         </div>
       `,
       phones: `
         <div>
-          <div class="text-[12px] text-[#6e6e73] mb-3">Explore Phones</div>
-          <ul class="space-y-2.5 text-[22px] font-semibold tracking-tight text-[#1d1d1f]">
-            <li><button onclick="closeMegaMenu(); scrollToSection('phones-hero')" class="hover:text-[#0071e3] transition-colors">Explore All Phones</button></li>
-            <li><button onclick="closeMegaMenu(); openPhoneTeaserModal()" class="hover:text-[#0071e3] transition-colors">SYOT Phone (In R&amp;D)</button></li>
+          <div class="text-[12px] text-[#6E6E73] mb-3">Explore Phones</div>
+          <ul class="space-y-3 text-[22px] font-bold tracking-tight text-[#1D1D1F]">
+            <li><button onclick="closeMegaMenu(); scrollToSection('phones-hero')" class="hover:text-[#0071E3] transition-colors">Explore All Phones</button></li>
+            <li><button onclick="closeMegaMenu(); openProductDetail('syot1a', 'overview')" class="hover:text-[#0071E3] transition-colors">SYOT 1A</button></li>
+            <li><button onclick="closeMegaMenu(); openProductDetail('syot1b', 'overview')" class="hover:text-[#0071E3] transition-colors">SYOT 1B</button></li>
+          </ul>
+          <div class="mt-5 space-y-2 text-[13px] font-bold text-[#1D1D1F]">
+            <div><button onclick="closeMegaMenu(); openProductDetail('syot1a', 'specs')" class="hover:underline">SYOT 1A — ₹1,09,999 / $1,249</button></div>
+            <div><button onclick="closeMegaMenu(); openProductDetail('syot1b', 'specs')" class="hover:underline">SYOT 1B — ₹74,999 / $799</button></div>
+          </div>
+        </div>
+        <div>
+          <div class="text-[12px] text-[#6E6E73] mb-3">Mobile Engineering</div>
+          <ul class="space-y-2.5 text-[13px] font-bold text-[#1D1D1F]">
+            <li><button onclick="closeMegaMenu(); scrollToSection('compare-phones-section')" class="hover:underline">Compare SYOT 1A vs. 1B</button></li>
+            <li><button onclick="closeMegaMenu(); openProductDetail('syot1a', 'camera')" class="hover:underline">Dual Periscope 8x Optics</button></li>
           </ul>
         </div>
         <div>
-          <div class="text-[12px] text-[#6e6e73] mb-3">Mobile Engineering</div>
-          <ul class="space-y-2.5 text-[13px] font-medium text-[#1d1d1f]">
-            <li><button onclick="closeMegaMenu(); openPhoneTeaserModal()" class="hover:underline">Next-Gen Concept Brief</button></li>
-            <li><button onclick="closeMegaMenu(); openProductDetail('lapt11', 'camera')" class="hover:underline">DualView Optics Research</button></li>
-          </ul>
-        </div>
-        <div>
-          <div class="text-[12px] text-[#6e6e73] mb-3">SYOT Ecosystem</div>
-          <ul class="space-y-2.5 text-[13px] font-medium text-[#6e6e73]">
-            <li>Seamless Desk10 &amp; LapT11 Sync</li>
-            <li>SYOT SpatialSound Integration</li>
+          <div class="text-[12px] text-[#6E6E73] mb-3">Flagship Hardware</div>
+          <ul class="space-y-2.5 text-[13px] font-medium text-[#6E6E73]">
+            <li>Snapdragon 8 Elite Gen 2 (2nm)</li>
+            <li>6,500 mAh &amp; 5,600 mAh Silicon-Carbon</li>
+            <li>LTPO Tandem OLED Displays</li>
           </ul>
         </div>
       `
     };
 
     let activeMega = null;
-    let currentProduct = 'desk10';
-    let currentTab = 'overview';
+    let activeProduct = 'syot1a';
+    let activeDetailTab = 'overview';
 
     function openMegaMenu(key) {
       const curtain = document.getElementById('megaMenuCurtain');
@@ -555,55 +713,48 @@
     function filterSearch(q) {
       const query = q.toLowerCase();
       const items = [
-        { title: 'Desk10 Supercomputer AIO', sub: 'Threadripper 9995WX • RTX 5090 • 256GB DDR5', prod: 'desk10', tab: 'specs' },
+        { title: 'SYOT 1A — Ultra Flagship', sub: '₹1,09,999 / $1,249 • 24GB RAM • 6.9" Tandem OLED', prod: 'syot1a', tab: 'overview' },
+        { title: 'SYOT 1B — Core Flagship', sub: '₹74,999 / $799 • 16GB RAM • 6.3" LTPO OLED', prod: 'syot1b', tab: 'overview' },
+        { title: 'Desk10 — Priority Workstation AIO', sub: '₹9,49,999 / $10,999 • Threadripper 9995WX • RTX 5090', prod: 'desk10', tab: 'specs' },
         { title: 'Custom EK-Quantum Liquid Loop', sub: 'EK-Quantum Vector • Desk10 Thermal System', prod: 'desk10', tab: 'cooling' },
-        { title: 'LapT11 Pro Laptop', sub: 'Ryzen 9 9955HX3D • RTX 5070 24GB • 250Wh', prod: 'lapt11', tab: 'specs' },
+        { title: 'LapT11 — Priority Mobile Workstation', sub: '₹3,49,999 / $3,999 • Ryzen 9 9955HX3D • RTX 5070 24GB', prod: 'lapt11', tab: 'specs' },
         { title: 'DualView Camera System', sub: 'Front 1080p 50fps • Rear QHD+ 60fps', prod: 'lapt11', tab: 'camera' },
         { title: 'SYOT SpatialSound Pro', sub: '6-Speaker Dolby Atmos Architecture', prod: 'lapt11', tab: 'audio' }
       ];
       const filtered = items.filter(i => i.title.toLowerCase().includes(query) || i.sub.toLowerCase().includes(query));
-      document.getElementById('searchResults').innerHTML = filtered.map(i => `
-        <button onclick="toggleSearchModal(); openProductDetail('${i.prod}', '${i.tab}')" class="w-full text-left px-3 py-2 rounded-lg hover:bg-[#f5f5f7] flex justify-between">
-          <span class="font-medium">${i.title}</span>
-          <span class="text-[#6e6e73]">${i.sub}</span>
+      document.getElementById('search-results-list').innerHTML = filtered.map(i => `
+        <button onclick="toggleSearchModal(); openProductDetail('${i.prod}', '${i.tab}')" class="w-full text-left px-3.5 py-2.5 rounded-xl hover:bg-[#F5F5F7] flex flex-col sm:flex-row sm:justify-between gap-1">
+          <span class="font-bold text-[#1D1D1F]">${i.title}</span>
+          <span class="text-[#6E6E73]">${i.sub}</span>
         </button>
-      `).join('') || '<div class="text-[#6e6e73] px-3 py-2">No matching SYOT hardware found.</div>';
+      `).join('') || '<div class="text-[#6E6E73] px-3.5 py-2.5">No matching SYOT hardware found.</div>';
     }
 
     function openProductDetail(product, tab = 'overview') {
       closeMegaMenu();
-      currentProduct = product;
-      currentTab = tab;
-      document.getElementById('modalProductTitle').textContent = product === 'desk10' ? 'Desk10 — Supercomputer AIO' : 'LapT11 — Concept Pro Laptop';
+      activeProduct = product;
+      activeDetailTab = tab;
+
+      const titles = {
+        desk10: ['Desk10', 'Priority Workstation AIO • ₹9,49,999 / $10,999'],
+        lapt11: ['LapT11', 'Priority Mobile Workstation • ₹3,49,999 / $3,999'],
+        syot1a: ['SYOT 1A', 'Ultra Flagship • ₹1,09,999 / $1,249'],
+        syot1b: ['SYOT 1B', 'Core Flagship • ₹74,999 / $799']
+      };
+
+      document.getElementById('modalProductTitle').textContent = titles[product][0];
+      document.getElementById('modalProductSubtitle').textContent = titles[product][1];
       document.getElementById('productModal').classList.remove('hidden');
-      renderModalContent();
+      renderProductDetailBody();
     }
 
     function switchModalTab(tab) {
-      currentTab = tab;
-      renderModalContent();
+      activeDetailTab = tab;
+      renderProductDetailBody();
     }
 
     function closeProductModal() {
       document.getElementById('productModal').classList.add('hidden');
-    }
-
-    function openPhoneTeaserModal() {
-      closeMegaMenu();
-      document.getElementById('modalProductTitle').textContent = 'SYOT Phone — Concept Vault';
-      document.getElementById('productModal').classList.remove('hidden');
-      document.getElementById('modalBody').innerHTML = `
-        <div class="text-center py-8">
-          <span class="text-[12px] font-semibold uppercase tracking-wider text-[#0071e3]">SYOT Mobile R&amp;D</span>
-          <h3 class="text-[32px] font-semibold tracking-tight mt-2">Next-Generation Mobile Concept</h3>
-          <p class="text-[16px] text-[#6e6e73] max-w-[540px] mx-auto mt-3">
-            Sreyas Operational Technology Laboratories is currently finalizing the industrial design, display optics, and silicon architecture for our inaugural flagship phone.
-          </p>
-          <div class="mt-8 inline-block bg-[#f5f5f7] rounded-2xl px-6 py-4 text-[13px] text-[#1d1d1f]">
-            Ready to update anytime in <code>index.html</code> via GitHub Pages.
-          </div>
-        </div>
-      `;
     }
 
     function setThermalMode(mode) {
@@ -623,101 +774,231 @@
       if (!box) return;
       if (lens === 'front') {
         box.innerHTML = `
-          <div class="text-[12px] uppercase tracking-wider text-[#0071e3] font-semibold">Front Bezel Camera Active</div>
-          <div class="text-[22px] font-semibold mt-1">1080p at 50fps Video &bull; FHD+ Photos</div>
-          <p class="text-[13px] text-[#6e6e73] mt-1">Optimized for ultra-smooth video conferencing and studio face framing.</p>
+          <div class="text-[12px] uppercase tracking-wider text-[#0071E3] font-bold">Front Bezel Camera Active</div>
+          <div class="text-[20px] sm:text-[22px] font-bold mt-1">1080p at 50fps Video &bull; FHD+ Photos</div>
+          <p class="text-[13px] text-[#6E6E73] mt-1">Optimized for ultra-smooth video conferencing and studio face framing.</p>
         `;
       } else {
         box.innerHTML = `
-          <div class="text-[12px] uppercase tracking-wider text-[#0071e3] font-semibold">Rear CNC Lid Camera Active</div>
-          <div class="text-[22px] font-semibold mt-1">QHD+ at 60fps Video &bull; QHD+ High-Res Photos</div>
-          <p class="text-[13px] text-[#6e6e73] mt-1">Turns your 17-inch 4K OLED touchscreen into a massive field viewfinder.</p>
+          <div class="text-[12px] uppercase tracking-wider text-[#0071E3] font-bold">Rear CNC Lid Camera Active</div>
+          <div class="text-[20px] sm:text-[22px] font-bold mt-1">QHD+ at 60fps Video &bull; QHD+ High-Res Photos</div>
+          <p class="text-[13px] text-[#6E6E73] mt-1">Turns your 17-inch 4K OLED touchscreen into a massive field viewfinder.</p>
         `;
       }
     }
 
-    function renderModalContent() {
+    function switchPhoneZoom(level) {
+      const readout = document.getElementById('syot1aZoomReadout');
+      if (!readout) return;
+      if (level === '1x') {
+        readout.innerHTML = '<strong>1x Main (23mm):</strong> 1-inch Sony LYT-900 50MP sensor &bull; f/1.63 aperture &bull; Gimbal OIS';
+      } else if (level === '3.5x') {
+        readout.innerHTML = '<strong>3.5x Optical Periscope (85mm):</strong> 50MP portrait telephoto &bull; Telemacro focus down to 10cm';
+      } else {
+        readout.innerHTML = '<strong>8x Optical Periscope (200mm):</strong> 50MP long-range periscope &bull; Lossless 16x in-sensor crop';
+      }
+    }
+
+    function renderProductDetailBody() {
       const tabOverview = document.getElementById('tabOverview');
       const tabSpecs = document.getElementById('tabSpecs');
-      const isSpecs = currentTab === 'specs';
-      tabOverview.className = !isSpecs ? 'text-[13px] px-3 py-1 rounded-full bg-[#1d1d1f] text-white' : 'text-[13px] px-3 py-1 rounded-full text-[#1d1d1f] hover:bg-black/5';
-      tabSpecs.className = isSpecs ? 'text-[13px] px-3 py-1 rounded-full bg-[#1d1d1f] text-white' : 'text-[13px] px-3 py-1 rounded-full text-[#1d1d1f] hover:bg-black/5';
+      const isSpecs = activeDetailTab === 'specs';
+      tabOverview.className = !isSpecs ? 'text-[13px] font-bold px-3.5 py-1.5 rounded-full bg-[#1D1D1F] text-white' : 'text-[13px] font-bold px-3.5 py-1.5 rounded-full text-[#1D1D1F] hover:bg-black/5';
+      tabSpecs.className = isSpecs ? 'text-[13px] font-bold px-3.5 py-1.5 rounded-full bg-[#1D1D1F] text-white' : 'text-[13px] font-bold px-3.5 py-1.5 rounded-full text-[#1D1D1F] hover:bg-black/5';
 
-      const body = document.getElementById('modalBody');
-      if (currentProduct === 'desk10') {
+      const container = document.getElementById('detail-body-container');
+
+      if (activeProduct === 'syot1a') {
         if (isSpecs) {
-          body.innerHTML = `
-            <h3 class="text-[28px] font-semibold tracking-tight mb-6">Desk10 Technical Specifications</h3>
-            <div class="divide-y divide-black/10 text-[15px]">
-              <div class="py-4 grid grid-cols-1 sm:grid-cols-3 gap-2"><span class="font-semibold">Processor</span><span class="sm:col-span-2 text-[#6e6e73]">AMD Ryzen Threadripper 9995WX Workstation CPU</span></div>
-              <div class="py-4 grid grid-cols-1 sm:grid-cols-3 gap-2"><span class="font-semibold">Graphics</span><span class="sm:col-span-2 text-[#6e6e73]">NVIDIA GeForce RTX 5090 32GB GDDR7</span></div>
-              <div class="py-4 grid grid-cols-1 sm:grid-cols-3 gap-2"><span class="font-semibold">Motherboard</span><span class="sm:col-span-2 text-[#6e6e73]">GIGABYTE TRX50 AI TOP</span></div>
-              <div class="py-4 grid grid-cols-1 sm:grid-cols-3 gap-2"><span class="font-semibold">Memory &amp; Storage</span><span class="sm:col-span-2 text-[#6e6e73]">256GB DDR5 RAM &bull; 32TB High-Speed Storage</span></div>
-              <div class="py-4 grid grid-cols-1 sm:grid-cols-3 gap-2"><span class="font-semibold">Display</span><span class="sm:col-span-2 text-[#6e6e73]">32-inch 4K (3840 &times; 2160) OLED with Dolby Vision 2</span></div>
-              <div class="py-4 grid grid-cols-1 sm:grid-cols-3 gap-2"><span class="font-semibold">Audio</span><span class="sm:col-span-2 text-[#6e6e73]">Dolby Atmos (6 Harman Kardon speakers + dedicated subwoofer)</span></div>
-              <div class="py-4 grid grid-cols-1 sm:grid-cols-3 gap-2"><span class="font-semibold">Cooling &amp; Power</span><span class="sm:col-span-2 text-[#6e6e73]">Custom EK-Quantum Liquid Loop &bull; EK-Quantum Vector Waterblocks &bull; Corsair AX1600i</span></div>
+          container.innerHTML = `
+            <div>
+              <p class="text-[12px] font-bold text-[#BF4800] uppercase tracking-widest">Ultra Flagship Concept &bull; ₹1,09,999 / $1,249</p>
+              <h2 class="text-[30px] sm:text-[40px] font-bold text-[#1D1D1F] mt-1">SYOT 1A Specifications</h2>
+            </div>
+            <div class="divide-y divide-[#D2D2D7]/70 border-t border-b border-[#D2D2D7]/70 text-[15px]">
+              <div class="py-4 grid grid-cols-1 sm:grid-cols-12 gap-2"><div class="sm:col-span-4 font-bold text-[#1D1D1F]">Price</div><div class="sm:col-span-8 text-[#1D1D1F] font-bold">₹1,09,999 / $1,249</div></div>
+              <div class="py-4 grid grid-cols-1 sm:grid-cols-12 gap-2"><div class="sm:col-span-4 font-bold text-[#1D1D1F]">Processor</div><div class="sm:col-span-8 text-[#6E6E73]">Qualcomm Snapdragon 8 Elite Gen 2 (2nm Architecture)</div></div>
+              <div class="py-4 grid grid-cols-1 sm:grid-cols-12 gap-2"><div class="sm:col-span-4 font-bold text-[#1D1D1F]">Memory &amp; Storage</div><div class="sm:col-span-8 text-[#6E6E73]">24GB LPDDR5X RAM &bull; 1TB–2TB UFS 4.1 High-Speed Storage</div></div>
+              <div class="py-4 grid grid-cols-1 sm:grid-cols-12 gap-2"><div class="sm:col-span-4 font-bold text-[#1D1D1F]">Display</div><div class="sm:col-span-8 text-[#6E6E73]">6.9-inch QHD+ 1–165Hz LTPO Tandem OLED (4,500 nits peak brightness)</div></div>
+              <div class="py-4 grid grid-cols-1 sm:grid-cols-12 gap-2"><div class="sm:col-span-4 font-bold text-[#1D1D1F]">Quad-50MP Pro Camera</div><div class="sm:col-span-8 text-[#6E6E73]">1-inch Sony LYT-900 Main + 50MP Ultra-Wide + Dual Periscope Telephoto (3.5x &amp; 8x Optical Zoom)</div></div>
+              <div class="py-4 grid grid-cols-1 sm:grid-cols-12 gap-2"><div class="sm:col-span-4 font-bold text-[#1D1D1F]">Battery &amp; Charging</div><div class="sm:col-span-8 text-[#6E6E73]">6,500 mAh Silicon-Carbon High-Density Cell &bull; 120W HyperCharge</div></div>
+              <div class="py-4 grid grid-cols-1 sm:grid-cols-12 gap-2"><div class="sm:col-span-4 font-bold text-[#1D1D1F]">Chassis</div><div class="sm:col-span-8 text-[#6E6E73]">Grade-5 Micro-Blasted Titanium Unibody</div></div>
             </div>
           `;
         } else {
-          body.innerHTML = `
-            <div class="space-y-8">
-              <div>
-                <span class="text-[12px] font-semibold uppercase tracking-wider text-[#0071e3]">Workstation All-In-One</span>
-                <h3 class="text-[32px] font-semibold tracking-tight mt-1">Uncompromising desktop silicon inside an ultra-clean OLED chassis.</h3>
-                <p class="text-[16px] text-[#6e6e73] mt-2">Engineered by SYOT Labs to pack server-grade Threadripper compute and an RTX 5090 under a custom EK-Quantum Vector liquid loop.</p>
+          container.innerHTML = `
+            <div class="text-center max-w-2xl mx-auto">
+              <p class="text-[12px] font-bold uppercase tracking-widest text-[#BF4800]">Ultra Flagship &bull; ₹1,09,999 / $1,249</p>
+              <h2 class="text-[36px] sm:text-[46px] font-bold text-[#1D1D1F] mt-1">SYOT 1A</h2>
+              <p class="text-[17px] text-[#6E6E73] mt-3 leading-relaxed">
+                Unrivaled mobile firepower: Snapdragon 8 Elite Gen 2 (2nm), 24GB RAM, 6.9&Prime; QHD+ 165Hz Tandem OLED, Quad-50MP Dual Periscope cameras, and a 6,500 mAh Silicon-Carbon battery.
+              </p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+              <div class="p-6 rounded-2xl bg-[#F5F5F7]">
+                <div class="text-[11px] font-bold text-[#6E6E73] uppercase">SILICON &amp; MEMORY</div>
+                <div class="text-[20px] font-bold text-[#1D1D1F] mt-1.5">8 Elite Gen 2 &bull; 24GB</div>
+                <p class="text-[13px] text-[#6E6E73] mt-2">2nm flagship processor paired with 24GB LPDDR5X and up to 2TB UFS 4.1.</p>
               </div>
-              <div class="bg-[#f5f5f7] rounded-2xl p-6">
-                <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
-                  <span class="font-semibold text-[15px]">Interactive EK-Quantum Loop Simulator</span>
-                  <div class="flex gap-2">
-                    <button onclick="setThermalMode('silent')" class="text-[12px] px-3 py-1.5 rounded-full bg-white border border-black/10 hover:border-[#0071e3]">Silent</button>
-                    <button onclick="setThermalMode('render')" class="text-[12px] px-3 py-1.5 rounded-full bg-white border border-black/10 hover:border-[#0071e3]">AI Render</button>
-                    <button onclick="setThermalMode('overdrive')" class="text-[12px] px-3 py-1.5 rounded-full bg-white border border-black/10 hover:border-[#0071e3]">Overdrive</button>
-                  </div>
+              <div class="p-6 rounded-2xl bg-[#F5F5F7]">
+                <div class="text-[11px] font-bold text-[#6E6E73] uppercase">QUAD-50MP OPTICS</div>
+                <div class="text-[20px] font-bold text-[#1D1D1F] mt-1.5">1&Prime; LYT-900 + 8x Zoom</div>
+                <p class="text-[13px] text-[#6E6E73] mt-2">1-inch primary sensor plus dual periscope telephoto lenses at 3.5x and 8x optical.</p>
+              </div>
+              <div class="p-6 rounded-2xl bg-[#F5F5F7]">
+                <div class="text-[11px] font-bold text-[#6E6E73] uppercase">ENDURANCE &amp; BUILD</div>
+                <div class="text-[20px] font-bold text-[#1D1D1F] mt-1.5">6,500 mAh &bull; 120W</div>
+                <p class="text-[13px] text-[#6E6E73] mt-2">Silicon-Carbon battery and 4,500-nit Tandem OLED encased in Grade-5 Titanium.</p>
+              </div>
+            </div>
+            <div class="bg-[#F5F5F7] rounded-2xl p-6">
+              <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                <span class="font-bold text-[15px]">Interactive Dual Periscope Optical Switcher</span>
+                <div class="flex gap-2">
+                  <button onclick="switchPhoneZoom('1x')" class="text-[12px] font-bold px-3.5 py-1.5 rounded-full bg-white border border-black/10 hover:border-[#0071E3]">1x Main</button>
+                  <button onclick="switchPhoneZoom('3.5x')" class="text-[12px] font-bold px-3.5 py-1.5 rounded-full bg-white border border-black/10 hover:border-[#0071E3]">3.5x Periscope</button>
+                  <button onclick="switchPhoneZoom('8x')" class="text-[12px] font-bold px-3.5 py-1.5 rounded-full bg-white border border-black/10 hover:border-[#0071E3]">8x Periscope</button>
                 </div>
-                <div id="thermalReadout" class="text-[14px] text-[#1d1d1f] bg-white rounded-xl p-4 border border-black/5">
-                  <strong>Silent Studio Mode:</strong> Coolant 29.1&deg;C &bull; Pump 1,800 RPM &bull; Acoustic Floor 19 dBA
+              </div>
+              <div id="syot1aZoomReadout" class="text-[14px] text-[#1D1D1F] bg-white rounded-xl p-4 border border-black/5">
+                <strong>1x Main (23mm):</strong> 1-inch Sony LYT-900 50MP sensor &bull; f/1.63 aperture &bull; Gimbal OIS
+              </div>
+            </div>
+          `;
+        }
+        return;
+      }
+
+      if (activeProduct === 'syot1b') {
+        if (isSpecs) {
+          container.innerHTML = `
+            <div>
+              <p class="text-[12px] font-bold text-[#0071E3] uppercase tracking-widest">Core Flagship Concept &bull; ₹74,999 / $799</p>
+              <h2 class="text-[30px] sm:text-[40px] font-bold text-[#1D1D1F] mt-1">SYOT 1B Specifications</h2>
+            </div>
+            <div class="divide-y divide-[#D2D2D7]/70 border-t border-b border-[#D2D2D7]/70 text-[15px]">
+              <div class="py-4 grid grid-cols-1 sm:grid-cols-12 gap-2"><div class="sm:col-span-4 font-bold text-[#1D1D1F]">Price</div><div class="sm:col-span-8 text-[#1D1D1F] font-bold">₹74,999 / $799</div></div>
+              <div class="py-4 grid grid-cols-1 sm:grid-cols-12 gap-2"><div class="sm:col-span-4 font-bold text-[#1D1D1F]">Processor</div><div class="sm:col-span-8 text-[#6E6E73]">Qualcomm Snapdragon 8 Elite Gen 2 (2nm Architecture)</div></div>
+              <div class="py-4 grid grid-cols-1 sm:grid-cols-12 gap-2"><div class="sm:col-span-4 font-bold text-[#1D1D1F]">Memory &amp; Storage</div><div class="sm:col-span-8 text-[#6E6E73]">16GB LPDDR5X RAM &bull; 256GB–512GB UFS 4.1 High-Speed Storage</div></div>
+              <div class="py-4 grid grid-cols-1 sm:grid-cols-12 gap-2"><div class="sm:col-span-4 font-bold text-[#1D1D1F]">Display</div><div class="sm:col-span-8 text-[#6E6E73]">6.3-inch 1.5K 1–120Hz LTPO OLED</div></div>
+              <div class="py-4 grid grid-cols-1 sm:grid-cols-12 gap-2"><div class="sm:col-span-4 font-bold text-[#1D1D1F]">Triple-50MP Camera</div><div class="sm:col-span-8 text-[#6E6E73]">50MP Flagship Main + 50MP Ultra-Wide + 50MP 3x Optical Telephoto</div></div>
+              <div class="py-4 grid grid-cols-1 sm:grid-cols-12 gap-2"><div class="sm:col-span-4 font-bold text-[#1D1D1F]">Battery &amp; Charging</div><div class="sm:col-span-8 text-[#6E6E73]">5,600 mAh Silicon-Carbon High-Density Cell &bull; 80W Fast Charge</div></div>
+              <div class="py-4 grid grid-cols-1 sm:grid-cols-12 gap-2"><div class="sm:col-span-4 font-bold text-[#1D1D1F]">Chassis</div><div class="sm:col-span-8 text-[#6E6E73]">Aerospace Aluminium Frame</div></div>
+            </div>
+          `;
+        } else {
+          container.innerHTML = `
+            <div class="text-center max-w-2xl mx-auto">
+              <p class="text-[12px] font-bold uppercase tracking-widest text-[#0071E3]">Core Flagship &bull; ₹74,999 / $799</p>
+              <h2 class="text-[36px] sm:text-[46px] font-bold text-[#1D1D1F] mt-1">SYOT 1B</h2>
+              <p class="text-[17px] text-[#6E6E73] mt-3 leading-relaxed">
+                Flagship 2nm speed in a sleek 6.3-inch frame: Snapdragon 8 Elite Gen 2, 16GB LPDDR5X RAM, Triple-50MP 3x telephoto cameras, and a 5,600 mAh Silicon-Carbon battery.
+              </p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+              <div class="p-6 rounded-2xl bg-[#F5F5F7]">
+                <div class="text-[11px] font-bold text-[#6E6E73] uppercase">SILICON &amp; MEMORY</div>
+                <div class="text-[20px] font-bold text-[#1D1D1F] mt-1.5">8 Elite Gen 2 &bull; 16GB</div>
+                <p class="text-[13px] text-[#6E6E73] mt-2">Same 2nm flagship processor as SYOT 1A with 16GB LPDDR5X and up to 512GB UFS 4.1.</p>
+              </div>
+              <div class="p-6 rounded-2xl bg-[#F5F5F7]">
+                <div class="text-[11px] font-bold text-[#6E6E73] uppercase">TRIPLE-50MP OPTICS</div>
+                <div class="text-[20px] font-bold text-[#1D1D1F] mt-1.5">3x Optical Telephoto</div>
+                <p class="text-[13px] text-[#6E6E73] mt-2">Dedicated 50MP 3x optical telephoto lens alongside 50MP main and ultra-wide sensors.</p>
+              </div>
+              <div class="p-6 rounded-2xl bg-[#F5F5F7]">
+                <div class="text-[11px] font-bold text-[#6E6E73] uppercase">DISPLAY &amp; BATTERY</div>
+                <div class="text-[20px] font-bold text-[#1D1D1F] mt-1.5">6.3&Prime; OLED &bull; 5,600 mAh</div>
+                <p class="text-[13px] text-[#6E6E73] mt-2">1.5K 1–120Hz LTPO OLED and 80W Fast Charge in a precision Aerospace Aluminium frame.</p>
+              </div>
+            </div>
+          `;
+        }
+        return;
+      }
+
+      if (activeProduct === 'desk10') {
+        if (isSpecs) {
+          container.innerHTML = `
+            <div>
+              <p class="text-[12px] font-bold text-[#BF4800] uppercase tracking-widest">Master Specification Sheet &bull; ₹9,49,999 / $10,999</p>
+              <h2 class="text-[30px] sm:text-[40px] font-bold text-[#1D1D1F] mt-1">SYOT Desk10 Tech Specs</h2>
+            </div>
+            <div class="divide-y divide-[#D2D2D7]/70 border-t border-b border-[#D2D2D7]/70 text-[15px]">
+              <div class="py-4 grid grid-cols-1 sm:grid-cols-12 gap-2"><div class="sm:col-span-4 font-bold text-[#1D1D1F]">Priority Workstation Price</div><div class="sm:col-span-8 text-[#1D1D1F] font-bold">₹9,49,999 / $10,999</div></div>
+              <div class="py-4 grid grid-cols-1 sm:grid-cols-12 gap-2"><div class="sm:col-span-4 font-bold text-[#1D1D1F]">Processor</div><div class="sm:col-span-8 text-[#6E6E73]">AMD Ryzen Threadripper 9995WX Workstation Architecture</div></div>
+              <div class="py-4 grid grid-cols-1 sm:grid-cols-12 gap-2"><div class="sm:col-span-4 font-bold text-[#1D1D1F]">Graphics</div><div class="sm:col-span-8 text-[#6E6E73]">NVIDIA GeForce RTX 5090 32GB GDDR7</div></div>
+              <div class="py-4 grid grid-cols-1 sm:grid-cols-12 gap-2"><div class="sm:col-span-4 font-bold text-[#1D1D1F]">Motherboard</div><div class="sm:col-span-8 text-[#6E6E73]">GIGABYTE TRX50 AI TOP</div></div>
+              <div class="py-4 grid grid-cols-1 sm:grid-cols-12 gap-2"><div class="sm:col-span-4 font-bold text-[#1D1D1F]">Memory &amp; Storage</div><div class="sm:col-span-8 text-[#6E6E73]">256GB DDR5 RAM &bull; 32TB High-Speed Storage</div></div>
+              <div class="py-4 grid grid-cols-1 sm:grid-cols-12 gap-2"><div class="sm:col-span-4 font-bold text-[#1D1D1F]">Display</div><div class="sm:col-span-8 text-[#6E6E73]">32-inch 4K (3840 &times; 2160) OLED with Dolby Vision 2</div></div>
+              <div class="py-4 grid grid-cols-1 sm:grid-cols-12 gap-2"><div class="sm:col-span-4 font-bold text-[#1D1D1F]">Audio</div><div class="sm:col-span-8 text-[#6E6E73]">Dolby Atmos (6 Harman Kardon speakers + subwoofer)</div></div>
+              <div class="py-4 grid grid-cols-1 sm:grid-cols-12 gap-2"><div class="sm:col-span-4 font-bold text-[#1D1D1F]">Cooling &amp; Power</div><div class="sm:col-span-8 text-[#6E6E73]">Custom EK-Quantum Liquid Loop &bull; EK-Quantum Vector Waterblocks &bull; Corsair AX1600i</div></div>
+            </div>
+          `;
+        } else {
+          container.innerHTML = `
+            <div class="text-center max-w-2xl mx-auto">
+              <p class="text-[12px] font-bold uppercase tracking-widest text-[#BF4800]">Priority Workstation AIO &bull; ₹9,49,999 / $10,999</p>
+              <h2 class="text-[36px] sm:text-[44px] font-bold text-[#1D1D1F] mt-1">Desk10</h2>
+              <p class="text-[17px] text-[#6E6E73] mt-3 leading-relaxed">
+                Full-tower workstation supremacy engineered inside a 32-inch 4K OLED All-in-One display.
+              </p>
+            </div>
+            <div class="bg-[#F5F5F7] rounded-2xl p-6">
+              <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                <span class="font-bold text-[15px]">Interactive EK-Quantum Loop Simulator</span>
+                <div class="flex flex-wrap gap-2">
+                  <button onclick="setThermalMode('silent')" class="text-[12px] font-bold px-3.5 py-1.5 rounded-full bg-white border border-black/10 hover:border-[#0071E3]">Silent</button>
+                  <button onclick="setThermalMode('render')" class="text-[12px] font-bold px-3.5 py-1.5 rounded-full bg-white border border-black/10 hover:border-[#0071E3]">AI Render</button>
+                  <button onclick="setThermalMode('overdrive')" class="text-[12px] font-bold px-3.5 py-1.5 rounded-full bg-white border border-black/10 hover:border-[#0071E3]">Overdrive</button>
                 </div>
+              </div>
+              <div id="thermalReadout" class="text-[14px] text-[#1D1D1F] bg-white rounded-xl p-4 border border-black/5">
+                <strong>Silent Studio Mode:</strong> Coolant 29.1&deg;C &bull; Pump 1,800 RPM &bull; Acoustic Floor 19 dBA
               </div>
             </div>
           `;
         }
       } else {
         if (isSpecs) {
-          body.innerHTML = `
-            <h3 class="text-[28px] font-semibold tracking-tight mb-6">LapT11 Technical Specifications</h3>
-            <div class="divide-y divide-black/10 text-[15px]">
-              <div class="py-4 grid grid-cols-1 sm:grid-cols-3 gap-2"><span class="font-semibold">Processor</span><span class="sm:col-span-2 text-[#6e6e73]">AMD Ryzen 9 9955HX3D</span></div>
-              <div class="py-4 grid grid-cols-1 sm:grid-cols-3 gap-2"><span class="font-semibold">Graphics</span><span class="sm:col-span-2 text-[#6e6e73]">NVIDIA GeForce RTX 5070 24GB</span></div>
-              <div class="py-4 grid grid-cols-1 sm:grid-cols-3 gap-2"><span class="font-semibold">Memory &amp; Storage</span><span class="sm:col-span-2 text-[#6e6e73]">64GB DDR5 RAM &bull; 4TB NVMe SSD</span></div>
-              <div class="py-4 grid grid-cols-1 sm:grid-cols-3 gap-2"><span class="font-semibold">Display</span><span class="sm:col-span-2 text-[#6e6e73]">17-inch 4K OLED Touchscreen</span></div>
-              <div class="py-4 grid grid-cols-1 sm:grid-cols-3 gap-2"><span class="font-semibold">Thermal Architecture</span><span class="sm:col-span-2 text-[#6e6e73]">5-Fan Cooling System with Full-Coverage Vapor Chamber</span></div>
-              <div class="py-4 grid grid-cols-1 sm:grid-cols-3 gap-2"><span class="font-semibold">DualView Camera System</span><span class="sm:col-span-2 text-[#6e6e73]">Front: 1080p 50fps video, FHD+ photos &bull; Rear: QHD+ 60fps video, QHD+ photos</span></div>
-              <div class="py-4 grid grid-cols-1 sm:grid-cols-3 gap-2"><span class="font-semibold">SYOT SpatialSound Pro</span><span class="sm:col-span-2 text-[#6e6e73]">6-Speaker Dolby Atmos Architecture</span></div>
-              <div class="py-4 grid grid-cols-1 sm:grid-cols-3 gap-2"><span class="font-semibold">Chassis &amp; Battery</span><span class="sm:col-span-2 text-[#6e6e73]">Precision CNC Aluminium &bull; 250Wh High-Capacity Battery</span></div>
+          container.innerHTML = `
+            <div>
+              <p class="text-[12px] font-bold text-[#0071E3] uppercase tracking-widest">Master Specification Sheet &bull; ₹3,49,999 / $3,999</p>
+              <h2 class="text-[30px] sm:text-[40px] font-bold text-[#1D1D1F] mt-1">SYOT LapT11 Tech Specs</h2>
+            </div>
+            <div class="divide-y divide-[#D2D2D7]/70 border-t border-b border-[#D2D2D7]/70 text-[15px]">
+              <div class="py-4 grid grid-cols-1 sm:grid-cols-12 gap-2"><div class="sm:col-span-4 font-bold text-[#1D1D1F]">Priority Workstation Price</div><div class="sm:col-span-8 text-[#1D1D1F] font-bold">₹3,49,999 / $3,999</div></div>
+              <div class="py-4 grid grid-cols-1 sm:grid-cols-12 gap-2"><div class="sm:col-span-4 font-bold text-[#1D1D1F]">Processor</div><div class="sm:col-span-8 text-[#6E6E73]">AMD Ryzen 9 9955HX3D</div></div>
+              <div class="py-4 grid grid-cols-1 sm:grid-cols-12 gap-2"><div class="sm:col-span-4 font-bold text-[#1D1D1F]">Graphics</div><div class="sm:col-span-8 text-[#6E6E73]">NVIDIA GeForce RTX 5070 24GB</div></div>
+              <div class="py-4 grid grid-cols-1 sm:grid-cols-12 gap-2"><div class="sm:col-span-4 font-bold text-[#1D1D1F]">Memory &amp; Storage</div><div class="sm:col-span-8 text-[#6E6E73]">64GB DDR5 RAM &bull; 4TB NVMe SSD</div></div>
+              <div class="py-4 grid grid-cols-1 sm:grid-cols-12 gap-2"><div class="sm:col-span-4 font-bold text-[#1D1D1F]">Display</div><div class="sm:col-span-8 text-[#6E6E73]">17-inch 4K OLED Touchscreen</div></div>
+              <div class="py-4 grid grid-cols-1 sm:grid-cols-12 gap-2"><div class="sm:col-span-4 font-bold text-[#1D1D1F]">Thermal Architecture</div><div class="sm:col-span-8 text-[#6E6E73]">5-Fan Cooling System with Full-Coverage Vapor Chamber</div></div>
+              <div class="py-4 grid grid-cols-1 sm:grid-cols-12 gap-2"><div class="sm:col-span-4 font-bold text-[#1D1D1F]">DualView Camera System</div><div class="sm:col-span-8 text-[#6E6E73]">Front: 1080p 50fps video, FHD+ photos &bull; Rear: QHD+ 60fps video, QHD+ photos</div></div>
+              <div class="py-4 grid grid-cols-1 sm:grid-cols-12 gap-2"><div class="sm:col-span-4 font-bold text-[#1D1D1F]">SYOT SpatialSound Pro</div><div class="sm:col-span-8 text-[#6E6E73]">6-Speaker Dolby Atmos Architecture</div></div>
+              <div class="py-4 grid grid-cols-1 sm:grid-cols-12 gap-2"><div class="sm:col-span-4 font-bold text-[#1D1D1F]">Chassis &amp; Battery</div><div class="sm:col-span-8 text-[#6E6E73]">Precision CNC Aluminium &bull; 250Wh High-Capacity Battery</div></div>
             </div>
           `;
         } else {
-          body.innerHTML = `
-            <div class="space-y-8">
-              <div>
-                <span class="text-[12px] font-semibold uppercase tracking-wider text-[#0071e3]">CNC Aluminium Flagship Laptop</span>
-                <h3 class="text-[32px] font-semibold tracking-tight mt-1">Desktop-class 3D V-Cache performance with a 250Wh battery.</h3>
-                <p class="text-[16px] text-[#6e6e73] mt-2">Cooled by a 5-fan vapor chamber system and equipped with SYOT's DualView Camera System and SpatialSound Pro.</p>
+          container.innerHTML = `
+            <div class="text-center max-w-2xl mx-auto">
+              <p class="text-[12px] font-bold uppercase tracking-widest text-[#0071E3]">Priority Mobile Workstation &bull; ₹3,49,999 / $3,999</p>
+              <h2 class="text-[36px] sm:text-[44px] font-bold text-[#1D1D1F] mt-1">LapT11</h2>
+              <p class="text-[17px] text-[#6E6E73] mt-3 leading-relaxed">
+                CNC Aluminium craftsmanship housing a 17-inch 4K OLED Touchscreen, 5-Fan Vapor Chamber, and a massive 250Wh battery.
+              </p>
+            </div>
+            <div class="bg-[#F5F5F7] rounded-2xl p-6">
+              <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                <span class="font-bold text-[15px]">Interactive DualView Camera Switcher</span>
+                <div class="flex flex-wrap gap-2">
+                  <button onclick="toggleDualView('front')" class="text-[12px] font-bold px-3.5 py-1.5 rounded-full bg-white border border-black/10 hover:border-[#0071E3]">Front Camera</button>
+                  <button onclick="toggleDualView('rear')" class="text-[12px] font-bold px-3.5 py-1.5 rounded-full bg-white border border-black/10 hover:border-[#0071E3]">Rear Lid Camera</button>
+                </div>
               </div>
-              <div class="bg-[#f5f5f7] rounded-2xl p-6">
-                <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
-                  <span class="font-semibold text-[15px]">Interactive DualView Camera Switcher</span>
-                  <div class="flex gap-2">
-                    <button onclick="toggleDualView('front')" class="text-[12px] px-3 py-1.5 rounded-full bg-white border border-black/10 hover:border-[#0071e3]">Front Camera</button>
-                    <button onclick="toggleDualView('rear')" class="text-[12px] px-3 py-1.5 rounded-full bg-white border border-black/10 hover:border-[#0071e3]">Rear Lid Camera</button>
-                  </div>
-                </div>
-                <div id="dualViewPreview" class="bg-white rounded-xl p-5 border border-black/5">
-                  <div class="text-[12px] uppercase tracking-wider text-[#0071e3] font-semibold">Front Bezel Camera Active</div>
-                  <div class="text-[22px] font-semibold mt-1">1080p at 50fps Video &bull; FHD+ Photos</div>
-                  <p class="text-[13px] text-[#6e6e73] mt-1">Optimized for ultra-smooth video conferencing and studio face framing.</p>
-                </div>
+              <div id="dualViewPreview" class="bg-white rounded-xl p-5 border border-black/5">
+                <div class="text-[12px] uppercase tracking-wider text-[#0071E3] font-bold">Front Bezel Camera Active</div>
+                <div class="text-[20px] sm:text-[22px] font-bold mt-1">1080p at 50fps Video &bull; FHD+ Photos</div>
+                <p class="text-[13px] text-[#6E6E73] mt-1">Optimized for ultra-smooth video conferencing and studio face framing.</p>
               </div>
             </div>
           `;
